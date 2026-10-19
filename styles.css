@@ -777,6 +777,9 @@ code, pre, .binary-font {
     0% { stroke: #ef4444; }
     100% { stroke: #fbbf24; }
 }
+.node-group {
+    cursor: pointer;
+}
 
 .graph-node {
     cursor: pointer;
@@ -790,6 +793,17 @@ code, pre, .binary-font {
     transform-origin: center;
     r: 26;
     stroke: #60a5fa;
+}
+
+.graph-node.colored-1 { fill: var(--c1); }
+.graph-node.colored-2 { fill: var(--c2); }
+.graph-node.colored-3 { fill: var(--c3); }
+.graph-node.colored-4 { fill: var(--c4); }
+
+.graph-node.has-conflict {
+    stroke: #ef4444 !important;
+    stroke-width: 5 !important;
+    animation: conflictPulse 1s infinite alternate;
 }
 
 .node-label {

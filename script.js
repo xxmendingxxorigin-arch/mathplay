@@ -470,10 +470,11 @@ function initFourColorModule() {
             mapStage.innerHTML = svgHtml;
 
             // Attach listeners to graph nodes
-            document.querySelectorAll('.graph-node, .node-group').forEach(el => {
+            document.querySelectorAll('.node-group').forEach(el => {
                 el.addEventListener('click', (e) => {
-                    const id = el.getAttribute('data-id') || el.closest('[data-id]').getAttribute('data-id');
-                    applyColorToRegion(id);
+                    e.stopPropagation();
+                    const id = el.getAttribute('data-id');
+                    if (id) applyColorToRegion(id);
                 });
             });
         }
@@ -699,15 +700,15 @@ function initNimGameModule() {
     }
 
     function handleTokenClick(rowIndex, tokenIndex, totalInRow) {
-        if (selectedRow !== null && selectedRow !== rowIndex) {
-            // Changed row: reset selection to this new row
-            selectedRow = rowIndex;
+        const countToTake = totalInRow - tokenIndex;
+        if (selectedRow === rowIndex && selectedCount === countToTake) {
+            // Toggling off / deselect
+            selectedRow = null;
             selectedCount = 0;
+        } else {
+            selectedRow = rowIndex;
+            selectedCount = countToTake;
         }
-
-        selectedRow = rowIndex;
-        // Number of tokens to take = from clicked token to the end
-        selectedCount = totalInRow - tokenIndex;
         renderGame();
     }
 
@@ -990,6 +991,18 @@ function initMontyHallModule() {
     }
 
     function handleDoorClick(doorIndex) {
+        if (gameState === 'DECIDE_SWITCH') {
+            if (doorIndex === revealedGoatDoor) {
+                return; // Host door is already open
+            }
+            if (doorIndex === playerChoice) {
+                finishGame(false); // Stay
+            } else {
+                finishGame(true); // Switch
+            }
+            return;
+        }
+
         if (gameState !== 'CHOOSE_FIRST') return;
 
         playerChoice = doorIndex;
@@ -1009,7 +1022,7 @@ function initMontyHallModule() {
         // Identify other unopened door
         const otherDoor = [0, 1, 2].find(d => d !== playerChoice && d !== revealedGoatDoor);
 
-        instructionText.innerHTML = `Monty Hall ha abierto la <strong>Puerta ${revealedGoatDoor + 1}</strong> y revela una cabra. ¿Deseas <strong>quedarte con la Puerta ${playerChoice + 1}</strong> o <strong>cambiar a la Puerta ${otherDoor + 1}</strong>?`;
+        instructionText.innerHTML = `Monty Hall ha abierto la <strong>Puerta ${revealedGoatDoor + 1}</strong> y revela una cabra. Puedes <strong>hacer clic en la puerta que desees</strong> o usar los botones: ¿quedarte con la <strong>Puerta ${playerChoice + 1}</strong> o cambiar a la <strong>Puerta ${otherDoor + 1}</strong>?`;
 
         btnStay.classList.remove('hidden');
         btnSwitch.classList.remove('hidden');
@@ -1266,11 +1279,12 @@ Hemos cruzado 6 puentes y no queda ningún camino libre para salir de la Ribera 
             });
         });
 
-        document.querySelectorAll('.bridge-path, .bridge-group').forEach(el => {
+        document.querySelectorAll('.bridge-group').forEach(el => {
             el.addEventListener('click', (e) => {
+                e.stopPropagation();
                 stopAutoPlay();
-                const bId = el.getAttribute('data-id') || el.closest('.bridge-group').getAttribute('data-id');
-                crossBridgeManual(bId);
+                const bId = el.getAttribute('data-id');
+                if (bId) crossBridgeManual(bId);
             });
         });
 
@@ -1283,19 +1297,21 @@ Hemos cruzado 6 puentes y no queda ningún camino libre para salir de la Ribera 
         const bridgesList = getActiveBridges();
         const totalBridges = bridgesList.length;
 
-        if (currentLocation === null) {
-            feedback.textContent = 'Primero haz clic en una masa de tierra (A, B, C o D) para elegir tu inicio, o usa el botón "Siguiente".';
-            return;
-        }
-
         if (crossedBridges.has(bridgeId)) {
             feedback.textContent = '¡Este puente ya fue cruzado! Las reglas prohíben cruzar dos veces el mismo puente.';
             return;
         }
 
         const bridge = bridgesList.find(b => b.id === bridgeId);
-        if (!bridge || (bridge.n1 !== currentLocation && bridge.n2 !== currentLocation)) {
-            feedback.textContent = `No puedes cruzar este puente porque no estás conectado a él. (Estás en ${currentLocation}).`;
+        if (!bridge) return;
+
+        if (currentLocation === null) {
+            // Auto start at n1 of the chosen bridge
+            currentLocation = bridge.n1;
+        }
+
+        if (bridge.n1 !== currentLocation && bridge.n2 !== currentLocation) {
+            feedback.textContent = `No puedes cruzar este puente porque no estás conectado a él. (Estás en la tierra ${currentLocation}).`;
             return;
         }
 
@@ -1314,10 +1330,21 @@ Hemos cruzado 6 puentes y no queda ningún camino libre para salir de la Ribera 
             );
 
             if (availableBridges.length === 0) {
-                feedback.innerHTML = `⚠️ <strong>¡Te has quedado atrapado en ${currentLocation}!</strong> No quedan puentes libres desde aquí. ¡Demostración visual del Teorema de Euler!`;
+                feedback.innerHTML = `⚠️ <strong>¡Te has quedado atrapado en la tierra ${currentLocation}!</strong> No quedan puentes libres sin repetir. ¡Euler demostró que con 7 puentes es matemáticamente imposible!<br>
+                <button id="btn-try-euler8-inline" class="btn btn-sm btn-accent" style="margin-top: 10px; cursor: pointer; box-shadow: 0 0 14px rgba(236,72,153,0.5);"><i class="fa-solid fa-wand-magic-sparkles"></i> 🌉 ¡Ver Solución con 8 Puentes!</button>`;
+                
+                const btnInline = document.getElementById('btn-try-euler8-inline');
+                if (btnInline) {
+                    btnInline.addEventListener('click', () => {
+                        modeSelect.value = 'euler-8';
+                        currentMode = 'euler-8';
+                        resetBridges();
+                        setTimeout(() => toggleAutoPlay(), 300);
+                    });
+                }
                 unlockBridgesMystery();
             } else {
-                feedback.textContent = `Has cruzado hacia ${currentLocation}. Te quedan ${totalBridges - crossedBridges.size} puentes.`;
+                feedback.textContent = `Has cruzado hacia la tierra ${currentLocation}. Te quedan ${totalBridges - crossedBridges.size} puentes.`;
             }
         }
 
