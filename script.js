@@ -72,17 +72,17 @@ function initFourColorModule() {
             type: 'polygons',
             viewBox: '0 0 500 560',
             regions: [
-                { id: 'col', name: 'Colombia', points: '140,50 200,60 210,120 160,150 110,100' },
-                { id: 'ven', name: 'Venezuela', points: '200,60 300,50 310,110 240,120 210,120' },
+                { id: 'col', name: 'Colombia', points: '140,50 200,60 210,120 180,140 160,150 110,100' },
+                { id: 'ven', name: 'Venezuela', points: '200,60 300,50 310,110 240,110 210,120' },
                 { id: 'guy', name: 'Guyanas', points: '300,50 380,60 370,110 310,110' },
                 { id: 'ecu', name: 'Ecuador', points: '110,100 160,150 120,180 80,140' },
-                { id: 'per', name: 'Perú', points: '120,180 160,150 210,180 220,280 160,300 130,220' },
-                { id: 'bra', name: 'Brasil', points: '210,120 240,120 310,110 370,110 440,170 450,270 380,340 300,320 260,250 220,280 210,180' },
-                { id: 'bol', name: 'Bolivia', points: '220,280 260,250 300,320 280,370 200,360 200,320' },
-                { id: 'par', name: 'Paraguay', points: '280,370 340,360 330,420 270,420 280,370' },
-                { id: 'chi', name: 'Chile', points: '160,300 200,320 200,480 170,540 150,480' },
-                { id: 'arg', name: 'Argentina', points: '200,360 280,370 270,420 310,460 260,540 200,480' },
-                { id: 'uru', name: 'Uruguay', points: '330,420 380,410 370,460 310,460' }
+                { id: 'per', name: 'Perú', points: '120,180 160,150 180,140 210,120 220,180 230,240 220,280 170,310 160,300 130,220' },
+                { id: 'bra', name: 'Brasil', points: '210,120 240,110 310,110 370,110 440,170 450,270 380,340 340,360 280,340 260,250 220,280 230,240 220,180' },
+                { id: 'bol', name: 'Bolivia', points: '220,280 260,250 280,340 240,350 200,340 170,310' },
+                { id: 'par', name: 'Paraguay', points: '240,350 280,340 340,360 330,410 260,400' },
+                { id: 'chi', name: 'Chile', points: '160,300 170,310 200,340 200,480 170,540 150,480' },
+                { id: 'arg', name: 'Argentina', points: '200,340 240,350 260,400 330,410 320,460 260,540 200,480' },
+                { id: 'uru', name: 'Uruguay', points: '330,410 380,410 370,460 320,460' }
             ],
             adjacencies: {
                 'col': ['ven', 'ecu', 'per', 'bra'],
@@ -90,12 +90,12 @@ function initFourColorModule() {
                 'guy': ['ven', 'bra'],
                 'ecu': ['col', 'per'],
                 'per': ['col', 'ecu', 'bra', 'bol', 'chi'],
-                'bra': ['col', 'ven', 'guy', 'per', 'bol', 'par', 'arg', 'uru'],
+                'bra': ['col', 'ven', 'guy', 'per', 'bol', 'par', 'uru'],
                 'bol': ['per', 'bra', 'par', 'arg', 'chi'],
                 'par': ['bol', 'bra', 'arg'],
                 'chi': ['per', 'bol', 'arg'],
-                'arg': ['chi', 'bol', 'par', 'bra', 'uru'],
-                'uru': ['arg', 'bra']
+                'arg': ['chi', 'bol', 'par', 'uru'],
+                'uru': ['bra', 'arg']
             }
         },
 
@@ -105,10 +105,10 @@ function initFourColorModule() {
             regions: [
                 { id: 'por', name: 'Portugal', points: '40,270 80,260 80,340 40,350' },
                 { id: 'esp', name: 'España', points: '80,260 180,250 180,350 80,340' },
-                { id: 'fra', name: 'Francia', points: '180,250 190,150 270,140 280,220 250,260 180,250' },
-                { id: 'uk', name: 'Reino Unido', points: '140,70 220,60 200,130 130,120' },
+                { id: 'fra', name: 'Francia', points: '180,250 190,150 250,140 280,170 280,220 250,260 180,250' },
+                { id: 'uk', name: 'Reino Unido (Isla)', points: '140,70 220,60 200,130 130,120' },
                 { id: 'bel', name: 'Bélgica', points: '250,140 280,130 280,170 250,170' },
-                { id: 'ned', name: 'Países Bajos', points: '270,90 310,80 310,130 270,130' },
+                { id: 'ned', name: 'Países Bajos', points: '270,90 310,80 310,130 280,130 250,140' },
                 { id: 'ger', name: 'Alemania', points: '280,130 370,110 380,210 300,220 280,170' },
                 { id: 'sui', name: 'Suiza', points: '250,220 300,220 300,260 250,260' },
                 { id: 'ita', name: 'Italia', points: '250,260 300,260 360,350 330,370 270,300' },
@@ -136,7 +136,7 @@ function initFourColorModule() {
             regions: [
                 { id: 'can', name: 'Canadá', points: '60,30 460,30 440,100 80,100' },
                 { id: 'usa', name: 'Estados Unidos', points: '80,100 440,100 410,190 150,190' },
-                { id: 'mex', name: 'México', points: '150,190 410,190 320,280 220,280' },
+                { id: 'mex', name: 'México', points: '150,190 410,190 320,280 270,280 220,280' },
                 { id: 'gua', name: 'Guatemala', points: '220,280 270,280 260,320 210,320' },
                 { id: 'belz', name: 'Belice', points: '270,280 300,270 300,300 270,300' },
                 { id: 'hon', name: 'Honduras', points: '260,300 330,300 320,340 260,330' },
@@ -161,21 +161,21 @@ function initFourColorModule() {
 
         'honeycomb-hive': {
             type: 'polygons',
-            viewBox: '0 0 500 400',
+            viewBox: '0 0 520 380',
             regions: [
-                // Row 1 (3 hexagons)
-                { id: 'h1', name: 'Celda Alpha', points: '140,60 180,35 220,60 220,110 180,135 140,110' },
-                { id: 'h2', name: 'Celda Beta', points: '230,60 270,35 310,60 310,110 270,135 230,110' },
-                { id: 'h3', name: 'Celda Gamma', points: '320,60 360,35 400,60 400,110 360,135 320,110' },
-                // Row 2 (4 hexagons - staggered)
-                { id: 'h4', name: 'Celda Delta', points: '95,145 135,120 175,145 175,195 135,220 95,195' },
-                { id: 'h5', name: 'Celda Épsilon (Centro)', points: '185,145 225,120 265,145 265,195 225,220 185,195' },
-                { id: 'h6', name: 'Celda Zeta (Centro)', points: '275,145 315,120 355,145 355,195 315,220 275,195' },
-                { id: 'h7', name: 'Celda Eta', points: '365,145 405,120 445,145 445,195 405,220 365,195' },
-                // Row 3 (3 hexagons)
-                { id: 'h8', name: 'Celda Theta', points: '140,230 180,205 220,230 220,280 180,305 140,280' },
-                { id: 'h9', name: 'Celda Iota', points: '230,230 270,205 310,230 310,280 270,305 230,280' },
-                { id: 'h10', name: 'Celda Kappa', points: '320,230 360,205 400,230 400,280 360,305 320,280' }
+                // Fila 1 (3 hexágonos)
+                { id: 'h1', name: 'Celda Alpha', points: '160,82 200,59 240,82 240,128 200,151 160,128' },
+                { id: 'h2', name: 'Celda Beta', points: '240,82 280,59 320,82 320,128 280,151 240,128' },
+                { id: 'h3', name: 'Celda Gamma', points: '320,82 360,59 400,82 400,128 360,151 320,128' },
+                // Fila 2 (4 hexágonos intercalados con contacto perfecto)
+                { id: 'h4', name: 'Celda Delta', points: '120,151 160,128 200,151 200,197 160,220 120,197' },
+                { id: 'h5', name: 'Celda Épsilon (Centro)', points: '200,151 240,128 280,151 280,197 240,220 200,197' },
+                { id: 'h6', name: 'Celda Zeta (Centro)', points: '280,151 320,128 360,151 360,197 320,220 280,197' },
+                { id: 'h7', name: 'Celda Eta', points: '360,151 400,128 440,151 440,197 400,220 360,197' },
+                // Fila 3 (3 hexágonos)
+                { id: 'h8', name: 'Celda Theta', points: '160,220 200,197 240,220 240,266 200,289 160,266' },
+                { id: 'h9', name: 'Celda Iota', points: '240,220 280,197 320,220 320,266 280,289 240,266' },
+                { id: 'h10', name: 'Celda Kappa', points: '320,220 360,197 400,220 400,266 360,289 320,266' }
             ],
             adjacencies: {
                 'h1': ['h2', 'h4', 'h5'],
@@ -221,33 +221,6 @@ function initFourColorModule() {
             }
         },
 
-        'wheel-graph': {
-            type: 'graph',
-            viewBox: '0 0 500 400',
-            nodes: [
-                { id: 'w_center', label: 'HUB', x: 250, y: 200 },
-                { id: 'w1', label: '1', x: 250, y: 70 },
-                { id: 'w2', label: '2', x: 380, y: 135 },
-                { id: 'w3', label: '3', x: 340, y: 310 },
-                { id: 'w4', label: '4', x: 160, y: 310 },
-                { id: 'w5', label: '5', x: 120, y: 135 }
-            ],
-            edges: [
-                // Wheel Spokes (Center to perimeter)
-                ['w_center', 'w1'], ['w_center', 'w2'], ['w_center', 'w3'], ['w_center', 'w4'], ['w_center', 'w5'],
-                // Odd Cycle Rim (5 vertices) -> Strictly requires 4 colors!
-                ['w1', 'w2'], ['w2', 'w3'], ['w3', 'w4'], ['w4', 'w5'], ['w5', 'w1']
-            ],
-            adjacencies: {
-                'w_center': ['w1', 'w2', 'w3', 'w4', 'w5'],
-                'w1': ['w_center', 'w2', 'w5'],
-                'w2': ['w_center', 'w1', 'w3'],
-                'w3': ['w_center', 'w2', 'w4'],
-                'w4': ['w_center', 'w3', 'w5'],
-                'w5': ['w_center', 'w4', 'w1']
-            }
-        },
-
         'birkhoff-diamond': {
             type: 'polygons',
             viewBox: '0 0 500 400',
@@ -255,45 +228,18 @@ function initFourColorModule() {
                 { id: 'r1', name: 'Norte', points: '250,30 380,120 250,150 120,120' },
                 { id: 'r2', name: 'Oeste Exterior', points: '120,120 250,150 170,250 50,200' },
                 { id: 'r3', name: 'Este Exterior', points: '380,120 450,200 330,250 250,150' },
-                { id: 'r4', name: 'Centro 1', points: '250,150 330,250 250,270 170,250' },
+                { id: 'r4', name: 'Centro', points: '250,150 330,250 250,270 170,250' },
                 { id: 'r5', name: 'Sur Oeste', points: '170,250 250,270 250,370 110,320' },
                 { id: 'r6', name: 'Sur Este', points: '330,250 390,320 250,370 250,270' }
             ],
             adjacencies: {
-                'r1': ['r2', 'r3', 'r4'],
+                // En el teorema de los 4 colores, tocar en un solo vértice (punto) NO es adyacencia
+                'r1': ['r2', 'r3'],
                 'r2': ['r1', 'r4', 'r5'],
                 'r3': ['r1', 'r4', 'r6'],
-                'r4': ['r1', 'r2', 'r3', 'r5', 'r6'],
+                'r4': ['r2', 'r3', 'r5', 'r6'],
                 'r5': ['r2', 'r4', 'r6'],
                 'r6': ['r3', 'r4', 'r5']
-            }
-        },
-
-        'planar-graph': {
-            type: 'graph',
-            viewBox: '0 0 500 400',
-            nodes: [
-                { id: 'n1', label: 'A', x: 250, y: 60 },
-                { id: 'n2', label: 'B', x: 100, y: 180 },
-                { id: 'n3', label: 'C', x: 400, y: 180 },
-                { id: 'n4', label: 'D', x: 180, y: 320 },
-                { id: 'n5', label: 'E', x: 320, y: 320 },
-                { id: 'n6', label: 'F', x: 250, y: 200 }
-            ],
-            edges: [
-                ['n1', 'n2'], ['n1', 'n3'], ['n1', 'n6'],
-                ['n2', 'n4'], ['n2', 'n6'],
-                ['n3', 'n5'], ['n3', 'n6'],
-                ['n4', 'n5'], ['n4', 'n6'],
-                ['n5', 'n6']
-            ],
-            adjacencies: {
-                'n1': ['n2', 'n3', 'n6'],
-                'n2': ['n1', 'n4', 'n6'],
-                'n3': ['n1', 'n5', 'n6'],
-                'n4': ['n2', 'n5', 'n6'],
-                'n5': ['n3', 'n4', 'n6'],
-                'n6': ['n1', 'n2', 'n3', 'n4', 'n5']
             }
         },
 
@@ -323,59 +269,174 @@ function initFourColorModule() {
         }
     };
 
-    // Procedural random planar map generator (3x3 jittered mesh)
+    // Procedural organic planar map generator (Voronoi + Lloyd relaxation + Exact Geometric Adjacency)
     function generateRandomPlanarMap() {
-        const rows = 3;
-        const cols = 3;
-        const width = 480;
-        const height = 360;
-        const marginX = 20;
-        const marginY = 20;
+        const width = 500;
+        const height = 400;
+        const pad = 25;
+        const numRegions = 8 + Math.floor(Math.random() * 6); // 8 a 13 regiones aleatorias
 
-        // Generate grid vertices with random jitter
-        const vertices = [];
-        for (let r = 0; r <= rows; r++) {
-            vertices[r] = [];
-            for (let c = 0; c <= cols; c++) {
-                const baseX = marginX + (c * (width - 2 * marginX)) / cols;
-                const baseY = marginY + (r * (height - 2 * marginY)) / rows;
-                
-                // Add jitter to internal vertices
-                const jitterX = (c > 0 && c < cols) ? (Math.random() - 0.5) * 45 : 0;
-                const jitterY = (r > 0 && r < rows) ? (Math.random() - 0.5) * 45 : 0;
+        const REGION_NAMES = [
+            'Reino de Avalon', 'Costa Esmeralda', 'Valle Dorado', 'Tierras del Norte',
+            'Bahía Carmesí', 'Meseta Zafiro', 'Bosque de Jade', 'Península Coral',
+            'Cumbres de Ágata', 'Oasis del Sol', 'Frontera Austral', 'Archipiélago de Niebla',
+            'Isla del Dragón', 'Tierras Altas', 'Delta Argenta', 'Paso del Viento'
+        ];
+        const shuffledNames = [...REGION_NAMES].sort(() => Math.random() - 0.5);
 
-                vertices[r][c] = {
-                    x: Math.round(baseX + jitterX),
-                    y: Math.round(baseY + jitterY)
+        // Generate initial random seeds
+        let sites = [];
+        for (let i = 0; i < numRegions; i++) {
+            sites.push({
+                x: pad + 15 + Math.random() * (width - 2 * pad - 30),
+                y: pad + 15 + Math.random() * (height - 2 * pad - 30)
+            });
+        }
+
+        // Bounding box for map
+        const box = [
+            { x: pad, y: pad },
+            { x: width - pad, y: pad },
+            { x: width - pad, y: height - pad },
+            { x: pad, y: height - pad }
+        ];
+
+        // Polygon bisector clipper (Sutherland-Hodgman)
+        function clipPolygonByBisector(poly, s1, s2) {
+            const mx = (s1.x + s2.x) / 2;
+            const my = (s1.y + s2.y) / 2;
+            const nx = s1.x - s2.x;
+            const ny = s1.y - s2.y;
+
+            function isInside(p) {
+                return (p.x - mx) * nx + (p.y - my) * ny >= 0;
+            }
+
+            function lineInter(pA, pB) {
+                const vA = (pA.x - mx) * nx + (pA.y - my) * ny;
+                const vB = (pB.x - mx) * nx + (pB.y - my) * ny;
+                const t = Math.abs(vA - vB) < 1e-6 ? 0.5 : vA / (vA - vB);
+                return {
+                    x: Math.round(pA.x + t * (pB.x - pA.x)),
+                    y: Math.round(pA.y + t * (pB.y - pA.y))
                 };
+            }
+
+            const res = [];
+            for (let i = 0; i < poly.length; i++) {
+                const curr = poly[i];
+                const next = poly[(i + 1) % poly.length];
+                const inCurr = isInside(curr);
+                const inNext = isInside(next);
+
+                if (inCurr) res.push(curr);
+                if (inCurr !== inNext) {
+                    res.push(lineInter(curr, next));
+                }
+            }
+            return res;
+        }
+
+        // 1 pass of Lloyd relaxation to create well-proportioned organic shapes
+        const relaxedSites = [];
+        for (let i = 0; i < sites.length; i++) {
+            let cell = [...box];
+            for (let j = 0; j < sites.length; j++) {
+                if (i !== j) cell = clipPolygonByBisector(cell, sites[i], sites[j]);
+            }
+            if (cell.length >= 3) {
+                let cx = 0, cy = 0;
+                cell.forEach(p => { cx += p.x; cy += p.y; });
+                relaxedSites.push({ x: cx / cell.length, y: cy / cell.length });
+            } else {
+                relaxedSites.push(sites[i]);
+            }
+        }
+        sites = relaxedSites;
+
+        // Final Voronoi cells
+        const regions = [];
+        for (let i = 0; i < sites.length; i++) {
+            let cell = [...box];
+            for (let j = 0; j < sites.length; j++) {
+                if (i !== j) cell = clipPolygonByBisector(cell, sites[i], sites[j]);
+            }
+            if (cell.length >= 3) {
+                const id = `reg_${i + 1}`;
+                regions.push({
+                    id: id,
+                    name: shuffledNames[i] || `Provincia ${i + 1}`,
+                    points: cell.map(p => `${p.x},${p.y}`).join(' ')
+                });
             }
         }
 
-        const regions = [];
+        // Exact geometric adjacency calculation
+        function distToSegment(p, a, b) {
+            const l2 = (b.x - a.x) ** 2 + (b.y - a.y) ** 2;
+            if (l2 === 0) return Math.hypot(p.x - a.x, p.y - a.y);
+            let t = ((p.x - a.x) * (b.x - a.x) + (p.y - a.y) * (b.y - a.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            return Math.hypot(p.x - (a.x + t * (b.x - a.x)), p.y - (a.y + t * (b.y - a.y)));
+        }
+
+        function edgesOverlap(a1, a2, b1, b2) {
+            const tol = 6;
+            const minLen = 8;
+            let close = 0;
+            if (distToSegment(b1, a1, a2) < tol) close++;
+            if (distToSegment(b2, a1, a2) < tol) close++;
+            if (distToSegment(a1, b1, b2) < tol) close++;
+            if (distToSegment(a2, b1, b2) < tol) close++;
+
+            if (close >= 2) {
+                const lenA = Math.hypot(a2.x - a1.x, a2.y - a1.y);
+                if (lenA < minLen) return false;
+                const dx = (a2.x - a1.x) / lenA;
+                const dy = (a2.y - a1.y) / lenA;
+                const t_b1 = (b1.x - a1.x) * dx + (b1.y - a1.y) * dy;
+                const t_b2 = (b2.x - a1.x) * dx + (b2.y - a1.y) * dy;
+                const overlapStart = Math.max(0, Math.min(t_b1, t_b2));
+                const overlapEnd = Math.min(lenA, Math.max(t_b1, t_b2));
+                return (overlapEnd - overlapStart >= minLen);
+            }
+            return false;
+        }
+
+        const polyEdges = {};
+        regions.forEach(r => {
+            const pts = r.points.trim().split(/\s+/).map(p => {
+                const [x, y] = p.split(',').map(Number);
+                return { x, y };
+            });
+            const edges = [];
+            for (let i = 0; i < pts.length; i++) {
+                edges.push([pts[i], pts[(i + 1) % pts.length]]);
+            }
+            polyEdges[r.id] = edges;
+        });
+
         const adjacencies = {};
-        const greek = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Épsilon', 'Zeta', 'Eta', 'Theta', 'Iota'];
+        regions.forEach(r => adjacencies[r.id] = []);
 
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                const id = `rand_${r}_${c}`;
-                const name = `Región ${greek[r * cols + c] || id}`;
-                const p1 = vertices[r][c];
-                const p2 = vertices[r][c + 1];
-                const p3 = vertices[r + 1][c + 1];
-                const p4 = vertices[r + 1][c];
-
-                regions.push({
-                    id: id,
-                    name: name,
-                    points: `${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y} ${p4.x},${p4.y}`
-                });
-
-                adjacencies[id] = [];
-                // 4-connected neighbors
-                if (r > 0) adjacencies[id].push(`rand_${r - 1}_${c}`);
-                if (r < rows - 1) adjacencies[id].push(`rand_${r + 1}_${c}`);
-                if (c > 0) adjacencies[id].push(`rand_${r}_${c - 1}`);
-                if (c < cols - 1) adjacencies[id].push(`rand_${r}_${c + 1}`);
+        for (let i = 0; i < regions.length; i++) {
+            for (let j = i + 1; j < regions.length; j++) {
+                const idA = regions[i].id;
+                const idB = regions[j].id;
+                let sharesEdge = false;
+                for (const eA of polyEdges[idA]) {
+                    for (const eB of polyEdges[idB]) {
+                        if (edgesOverlap(eA[0], eA[1], eB[0], eB[1])) {
+                            sharesEdge = true;
+                            break;
+                        }
+                    }
+                    if (sharesEdge) break;
+                }
+                if (sharesEdge) {
+                    adjacencies[idA].push(idB);
+                    adjacencies[idB].push(idA);
+                }
             }
         }
 
@@ -580,19 +641,32 @@ function initFourColorModule() {
         const availableColors = ['color-1', 'color-2', 'color-3', 'color-4'];
         const solution = {};
 
-        for (const nodeId of sortedNodes) {
+        function backtrack(index) {
+            if (index === sortedNodes.length) return true;
+            const nodeId = sortedNodes[index];
             const neighborColors = new Set(
                 (currentMapData.adjacencies[nodeId] || [])
                     .map(neighbor => solution[neighbor])
                     .filter(Boolean)
             );
+            for (const col of availableColors) {
+                if (!neighborColors.has(col)) {
+                    solution[nodeId] = col;
+                    if (backtrack(index + 1)) return true;
+                    delete solution[nodeId];
+                }
+            }
+            return false;
+        }
 
-            // Find first color not used by any colored neighbor
-            const chosen = availableColors.find(c => !neighborColors.has(c));
-            if (chosen) {
-                solution[nodeId] = chosen;
-            } else {
-                solution[nodeId] = 'color-1'; // fallback
+        if (!backtrack(0)) {
+            for (const nodeId of sortedNodes) {
+                const neighborColors = new Set(
+                    (currentMapData.adjacencies[nodeId] || [])
+                        .map(neighbor => solution[neighbor])
+                        .filter(Boolean)
+                );
+                solution[nodeId] = availableColors.find(c => !neighborColors.has(c)) || 'color-1';
             }
         }
 
