@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matemáticas Interactivas: Teorema de los 4 Colores & Teoría de Juegos</title>
+    <meta name="description" content="Plataforma educativa e interactiva para aprender el Teorema de los Cuatro Colores y las matemáticas aplicadas en los juegos: Teoría de Juegos, Nim, Grafos y Probabilidad.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Animated Particles / Grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <div class="logo-icon">
+                    <span class="color-dot dot-1"></span>
+                    <span class="color-dot dot-2"></span>
+                    <span class="color-dot dot-3"></span>
+                    <span class="color-dot dot-4"></span>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">Math<span class="highlight">Play</span></span>
+                    <span class="logo-subtitle">Educación & Matemáticas</span>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#four-colors" class="nav-link active"><i class="fa-solid fa-palette"></i> 4 Colores</a>
+                <a href="#math-games" class="nav-link"><i class="fa-solid fa-dice"></i> Mate en Juegos</a>
+                <a href="#game-nim" class="nav-link"><i class="fa-solid fa-chess-board"></i> Nim & Estrategia</a>
+                <a href="#game-theory" class="nav-link"><i class="fa-solid fa-handshake-simple"></i> Teoría de Juegos</a>
+                <a href="#monty-hall" class="nav-link"><i class="fa-solid fa-door-open"></i> Probabilidad</a>
+                <a href="#quiz-section" class="nav-link"><i class="fa-solid fa-circle-question"></i> Quiz</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-theme" id="theme-toggle" title="Cambiar tema visual">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="badge hero-badge">
+                    <i class="fa-solid fa-sparkles"></i> Aprende jugando • Matemáticas visuales
+                </div>
+                <h1 class="hero-title">
+                    Descubre el Poder de las <span class="gradient-text">Matemáticas</span> en Mapas y Juegos
+                </h1>
+                <p class="hero-desc">
+                    Explora de forma interactiva el famoso <strong>Teorema de los Cuatro Colores</strong> y sumérgete en cómo las matemáticas dominan los juegos: desde la <em>Teoría de Grafos</em> y el <em>Equilibrio de Nash</em> hasta el <em>Juego del Nim</em> y las paradojas de probabilidad.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#four-colors" class="btn btn-primary">
+                        <i class="fa-solid fa-palette"></i> Probar Mapa de 4 Colores
+                    </a>
+                    <a href="#math-games" class="btn btn-secondary">
+                        <i class="fa-solid fa-gamepad"></i> Explorar Juegos Matemáticos
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-card-preview">
+                <div class="glass-card mini-interactive-showcase">
+                    <div class="showcase-header">
+                        <span class="status-indicator live"></span>
+                        <span>Demostración en Vivo: 4 Colores Bastan</span>
+                    </div>
+                    <div class="showcase-visual">
+                        <svg viewBox="0 0 240 180" class="hero-svg-preview">
+                            <polygon points="20,20 120,20 80,90 20,80" class="hero-poly hp-1" />
+                            <polygon points="120,20 220,30 180,100 80,90" class="hero-poly hp-2" />
+                            <polygon points="20,80 80,90 90,160 30,160" class="hero-poly hp-3" />
+                            <polygon points="80,90 180,100 150,160 90,160" class="hero-poly hp-4" />
+                            <polygon points="180,100 220,30 220,160 150,160" class="hero-poly hp-1" />
+                        </svg>
+                    </div>
+                    <div class="showcase-footer">
+                        <p><i class="fa-solid fa-lightbulb"></i> Ninguna región adyacente comparte el mismo color.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: TEOREMA DE LOS 4 COLORES -->
+        <section id="four-colors" class="section-container">
+            <div class="section-header">
+                <div class="badge"><i class="fa-solid fa-map-location-dot"></i> Topología & Grafos Planares</div>
+                <h2 class="section-title">El Teorema de los Cuatro Colores</h2>
+                <p class="section-subtitle">
+                    "Cualquier mapa plano puede colorearse con un máximo de <strong>4 colores</strong> de tal modo que ningún par de regiones fronterizas compartan el mismo color."
+                </p>
+            </div>
+
+            <!-- Interactive Sandbox -->
+            <div class="interactive-grid">
+                <!-- Left: Canvas/Map Board -->
+                <div class="glass-card map-sandbox-card">
+                    <div class="sandbox-toolbar">
+                        <div class="map-selector-group">
+                            <label for="map-select"><i class="fa-solid fa-map"></i> Elegir Mapa:</label>
+                            <select id="map-select" class="custom-select">
+                                <optgroup label="🌍 Mapas Geográficos Reales">
+                                    <option value="south-america">Sudamérica (11 Países)</option>
+                                    <option value="western-europe">Europa Occidental (11 Países)</option>
+                                    <option value="north-central-america">Norte y Centroamérica (10 Países)</option>
+                                </optgroup>
+                                <optgroup label="📐 Geometría & Topología">
+                                    <option value="honeycomb-hive">Mosaico Hexagonal (Panal de Abejas)</option>
+                                    <option value="concentric-rings">Diana de Anillos y Sectores</option>
+                                    <option value="birkhoff-diamond">Diamante de Birkhoff (Clásico)</option>
+                                    <option value="voronoi-complex">Islas de Voronoi (Complejo)</option>
+                                </optgroup>
+                                <optgroup label="🕸️ Teoría de Grafos">
+                                    <option value="wheel-graph">Grafo Rueda Impar W₇ (Obliga a 4 Colores)</option>
+                                    <option value="planar-graph">Grafo Planar / Red de Nodos K₄+</option>
+                                </optgroup>
+                                <optgroup label="🎲 Generador Dinámico">
+                                    <option value="random-map">✨ Generar Mapa Aleatorio Procedural</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="sandbox-actions">
+                            <button id="btn-new-random" class="btn btn-sm btn-secondary hidden" title="Generar una nueva distribución de regiones aleatorias">
+                                <i class="fa-solid fa-shuffle"></i> Nuevo Mapa Aleatorio
+                            </button>
+                            <button id="btn-auto-solve" class="btn btn-sm btn-accent" title="El algoritmo colorea automáticamente sin conflictos">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Resolver
+                            </button>
+                            <button id="btn-reset-map" class="btn btn-sm btn-outline" title="Reiniciar colores">
+                                <i class="fa-solid fa-rotate-left"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Color Picker Palette -->
+                    <div class="palette-container">
+                        <span class="palette-label">Selecciona tu color activo:</span>
+                        <div class="palette-buttons">
+                            <button class="color-btn active" data-color="color-1" style="--c: #3b82f6;" title="Color 1: Azul Cyan">
+                                <span class="btn-indicator">1</span>
+                            </button>
+                            <button class="color-btn" data-color="color-2" style="--c: #ec4899;" title="Color 2: Rosa Magenta">
+                                <span class="btn-indicator">2</span>
+                            </button>
+                            <button class="color-btn" data-color="color-3" style="--c: #10b981;" title="Color 3: Verde Esmeralda">
+                                <span class="btn-indicator">3</span>
+                            </button>
+                            <button class="color-btn" data-color="color-4" style="--c: #f59e0b;" title="Color 4: Ámbar Dorado">
+                                <span class="btn-indicator">4</span>
+                            </button>
+                            <button class="color-btn eraser" data-color="clear" title="Borrador">
+                                <i class="fa-solid fa-eraser"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Map Render Container -->
+                    <div class="map-stage" id="map-stage">
+                        <!-- SVG map injected by JavaScript -->
+                    </div>
+
+                    <!-- Status Bar / Validator -->
+                    <div class="sandbox-status-bar" id="map-status-bar">
+                        <div class="status-stat">
+                            <i class="fa-solid fa-fill-drip"></i>
+                            <span>Coloreadas: <strong id="stat-colored">0 / 0</strong></span>
+                        </div>
+                        <div class="status-stat">
+                            <i class="fa-solid fa-palette"></i>
+                            <span>Colores Usados: <strong id="stat-colors-used">0 / 4</strong></span>
+                        </div>
+                        <div class="status-stat" id="stat-conflict-wrapper">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>Conflictos Adyacentes: <strong id="stat-conflicts">0</strong></span>
+                        </div>
+                    </div>
+
+                    <div id="map-success-banner" class="success-banner hidden">
+                        <i class="fa-solid fa-trophy"></i>
+                        <div>
+                            <strong>¡Mapa Válido y Completo!</strong>
+                            <p>Has demostrado el teorema en este mapa usando 4 colores o menos sin ningún conflicto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Educational & Theory Tabs -->
+                <div class="glass-card theory-card">
+                    <div class="tab-headers">
+                        <button class="tab-btn active" data-tab="tab-history"><i class="fa-solid fa-clock-rotate-left"></i> Historia</button>
+                        <button class="tab-btn" data-tab="tab-why4"><i class="fa-solid fa-calculator"></i> ¿Por qué 4?</button>
+                        <button class="tab-btn" data-tab="tab-computer"><i class="fa-solid fa-microchip"></i> La Prueba Digital</button>
+                        <button class="tab-btn" data-tab="tab-apps"><i class="fa-solid fa-tower-broadcast"></i> Aplicaciones</button>
+                    </div>
+
+                    <div class="tab-contents">
+                        <!-- Tab 1: Historia -->
+                        <div class="tab-pane active" id="tab-history">
+                            <h3>De una simple carta a un hito matemático</h3>
+                            <p>En <strong>1852</strong>, el estudiante de matemáticas <strong>Francis Guthrie</strong> estaba coloreando el mapa de los condados de Inglaterra. Se dio cuenta de que solo necesitaba 4 colores para que ningún condado vecino tuviera el mismo color.</p>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <span class="timeline-year">1852</span>
+                                    <div class="timeline-text">Francis Guthrie plantea la conjetura a su hermano Frederick y a Augustus De Morgan.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-year">1879</span>
+                                    <div class="timeline-text">Alfred Kempe publica una "prueba" famosa, pero 11 años después (1890) Percy Heawood encuentra un error fatal.</div>
+                                </div>
+                                <div class="timeline-item">
+                                    <span class="timeline-year">1976</span>
+                                    <div class="timeline-text"><strong>Kenneth Appel y Wolfgang Haken</strong> logran la primera demostración completa de la historia asistida por ordenador.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: ¿Por qué 4 y no 3? -->
+                        <div class="tab-pane" id="tab-why4">
+                            <h3>¿Por qué 3 colores no son suficientes?</h3>
+                            <p>Es muy fácil demostrar que <strong>3 colores fallan</strong> en situaciones simples. Por ejemplo, si tienes 3 regiones que se tocan todas entre sí (un triángulo), necesitas 3 colores.</p>
+                            <p>Si añades una 4ª región en el centro que toque a las tres anteriores, ¡es matemáticamente imposible colorearla sin un <strong>4º color</strong>!</p>
+                            
+                            <div class="info-callout">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <div>
+                                    <strong>¿Por qué no podemos necesitar 5 colores?</strong>
+                                    <p>En una hoja de papel plana es geométricamente imposible dibujar 5 países donde <em>todos</em> toquen a los otros 4 al mismo tiempo. ¡Por eso 4 colores siempre son suficientes para cualquier mapa del mundo!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Prueba por Computadora -->
+                        <div class="tab-pane" id="tab-computer">
+                            <h3>La Gran Controversia de 1976</h3>
+                            <p>El Teorema de los Cuatro Colores fue el <strong>primer teorema mayor demostrado por una computadora</strong>:</p>
+                            <ul class="feature-list">
+                                <li><i class="fa-solid fa-check"></i> Redujeron todos los mapas posibles a <strong>1.936 configuraciones inevitables</strong>.</li>
+                                <li><i class="fa-solid fa-check"></i> Una supercomputadora IBM trabajó más de <strong>1.200 horas</strong> comprobando cada caso.</li>
+                                <li><i class="fa-solid fa-check"></i> <em>¿Era ciencia?</em> Muchos matemáticos puristas protestaron porque ningún humano podía revisar a mano millones de operaciones.</li>
+                                <li><i class="fa-solid fa-check"></i> En 2005, Georges Gonthier verificó la prueba con el asistente formal de pruebas <strong>Coq</strong>, disipando cualquier duda.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab 4: Aplicaciones -->
+                        <div class="tab-pane" id="tab-apps">
+                            <h3>¿Para qué sirve más allá de los mapas?</h3>
+                            <p>El problema subyacente es la <strong>Coloración de Grafos</strong>, fundamental en computación e ingeniería:</p>
+                            <div class="app-cards-mini">
+                                <div class="app-mini">
+                                    <i class="fa-solid fa-signal"></i>
+                                    <strong>Torres de Telefonía</strong>
+                                    <span>Asignar frecuencias de radio a antenas cercanas para evitar interferencias usando el menor espectro.</span>
+                                </div>
+                                <div class="app-mini">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                    <strong>Horarios de Exámenes</strong>
+                                    <span>Programar exámenes sin que los alumnos con materias en común tengan conflicto en la misma hora.</span>
+                                </div>
+                                <div class="app-mini">
+                                    <i class="fa-solid fa-microchip"></i>
+                                    <strong>Registros en CPUs</strong>
+                                    <span>Asignación óptima de variables a registros físicos del procesador en compiladores.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MATEMÁTICAS EN LOS JUEGOS OVERVIEW -->
+        <section id="math-games" class="section-container">
+            <div class="section-header">
+                <div class="badge"><i class="fa-solid fa-chess"></i> Estrategia, Grafos & Azar</div>
+                <h2 class="section-title">Las Matemáticas Detrás de los Juegos</h2>
+                <p class="section-subtitle">
+                    Los juegos no son solo entretenimiento; son la cuna de ramas enteras de la matemática moderna: la <strong>Teoría de Juegos</strong>, la <strong>Combinatoria</strong> y la <strong>Probabilidad</strong>.
+                </p>
+            </div>
+
+            <!-- 4 Branches Cards -->
+            <div class="cards-grid-4">
+                <a href="#game-nim" class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-binary"></i></div>
+                    <h3>El Juego del Nim & XOR</h3>
+                    <p>Juegos combinatorios sin azar. Descubre cómo la suma binaria (operación XOR) garantiza la victoria matemática.</p>
+                    <span class="card-link-action">Jugar contra la IA <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="#game-theory" class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>Dilema del Prisionero & Nash</h3>
+                    <p>¿Cooperar o traicionar? La teoría de juegos de John Nash modela economías, guerras y estrategias biológicas.</p>
+                    <span class="card-link-action">Simular Torneo <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="#monty-hall" class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-door-closed"></i></div>
+                    <h3>Paradoja de Monty Hall</h3>
+                    <p>¿Cambiar de puerta o quedarse? Un dilema probabilístico que engañó a matemáticos y premios Nobel.</p>
+                    <span class="card-link-action">Experimentar <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+
+                <a href="#bridges-euler" class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-route"></i></div>
+                    <h3>Puentes de Königsberg</h3>
+                    <p>El acertijo de 1736 que obligó a Leonhard Euler a inventar la <strong>Teoría de Grafos</strong> y la Topología.</p>
+                    <span class="card-link-action">Trazar Camino <i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 3: EL JUEGO DEL NIM (INTERACTIVO) -->
+        <section id="game-nim" class="section-container">
+            <div class="glass-card module-card">
+                <div class="module-header">
+                    <div>
+                        <div class="badge"><i class="fa-solid fa-calculator"></i> Teoría Combinatoria de Juegos (Imparciales)</div>
+                        <h2 class="module-title">El Juego del Nim y la Suma Binaria (XOR)</h2>
+                    </div>
+                    <div class="ai-status-badge" id="nim-turn-badge">
+                        <i class="fa-solid fa-user"></i> Tu Turno
+                    </div>
+                </div>
+
+                <div class="module-body-split">
+                    <!-- Left: Interactive Nim Game -->
+                    <div class="nim-game-container">
+                        <div class="nim-rules-banner">
+                            <strong>Reglas:</strong> En tu turno, elige <em>una sola fila</em> y retira la cantidad de fichas que desees (mínimo 1). ¡Gana quien retire la <strong>última ficha</strong> del tablero!
+                        </div>
+
+                        <!-- Heaps Display -->
+                        <div class="nim-heaps" id="nim-heaps-container">
+                            <!-- Injected by JavaScript -->
+                        </div>
+
+                        <!-- Nim Controls -->
+                        <div class="nim-controls">
+                            <button id="btn-nim-end-turn" class="btn btn-primary" disabled>
+                                <i class="fa-solid fa-check"></i> Confirmar Movimiento
+                            </button>
+                            <button id="btn-nim-reset" class="btn btn-outline">
+                                <i class="fa-solid fa-arrows-rotate"></i> Nueva Partida
+                            </button>
+                            <div class="nim-diff-toggle">
+                                <label><input type="checkbox" id="nim-show-math" checked> Mostrar Análisis Binario</label>
+                            </div>
+                        </div>
+
+                        <div id="nim-message" class="game-alert-box">
+                            Haz clic en las fichas que deseas retirar de una fila.
+                        </div>
+                    </div>
+
+                    <!-- Right: Kid-friendly Explanation & Binary Analyzer -->
+                    <div class="nim-math-inspector">
+                        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> El Truco Mágico para Ganar al Nim</h3>
+                        <p>
+                            ¿Sabías que hay un truco matemático para no perder nunca? En 1901, el profesor <strong>Charles Bouton</strong> descubrió que si miras las fichas en números binarios (en parejas de 1, 2 y 4), ¡puedes saber siempre qué movimiento te hace ganar!
+                        </p>
+
+                        <!-- Live Binary Table -->
+                        <div class="binary-calc-table" id="nim-binary-table">
+                            <!-- Injected by JavaScript -->
+                        </div>
+
+                        <div class="nim-math-explanation">
+                            <div class="math-rule-pill">
+                                <strong>🌟 Posición Ganadora (Balanza desequilibrada):</strong> Si la Suma-Nim NO es cero, ¡es tu oportunidad! Puedes quitar fichas para dejar la balanza en cero y acorralar al otro jugador.
+                            </div>
+                            <div class="math-rule-pill">
+                                <strong>🛡️ Posición Segura (Balanza en Cero):</strong> Si logras dejar la suma en 0 al terminar tu turno, tu rival quedará atrapado y hagas lo que haga, ¡la última ficha será para ti!
+                            </div>
+                            <p class="math-subtext">
+                                <i class="fa-solid fa-robot"></i> <strong>Cómo piensa la IA:</strong> La computadora busca en cada turno la fila correcta para quitar fichas y dejar siempre la balanza en <strong>0</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History & Deep Math Section for Nim (Kid-Friendly) -->
+                <div class="history-math-section">
+                    <div class="history-card-collapsible open">
+                        <button class="history-header-btn" type="button">
+                            <span class="btn-left">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <span>📖 La Historia del Juego y el Secreto de las Parejas (Explicación para Niños)</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="history-content">
+                            <div class="history-grid-split">
+                                <div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-gem"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>¿De dónde viene este juego?</h4>
+                                            <span class="mathematician-dates">Antigua China y África • Siglos de tradición</span>
+                                            <p>Hace cientos de años, los niños y sabios en China jugaban a recoger piedritas con un juego llamado <em>Jianshizi</em>. En 1901, un profesor de Harvard llamado <strong>Charles Bouton</strong> lo llamó <strong>NIM</strong> (que en alemán antiguo significa <em>"¡Toma una!"</em>) y descubrió la fórmula secreta para ser invencible.</p>
+                                        </div>
+                                    </div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-robot"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>El "Nimatron": El primer robot jugador (1940)</h4>
+                                            <span class="mathematician-dates">Feria Mundial de Nueva York</span>
+                                            <p>Construyeron una de las primeras máquinas con luces y botones de la historia solo para jugar al Nim contra humanos. ¡Jugó 100.000 partidas y le ganó a casi todos gracias a la matemática!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="math-deep-dive">
+                                    <h4><i class="fa-solid fa-child-reaching"></i> El Secreto de las "Parejas Mágicas"</h4>
+                                    <p>Para explicárselo a los más pequeños sin fórmulas difíciles:</p>
+                                    <ul>
+                                        <li><strong>La Regla del Espejo:</strong> Imagina que tienes 2 filas exactamente iguales (por ejemplo, 3 gemas y 3 gemas). Si tú siempre <em>imitas como un espejo</em> lo que hace tu amigo en la otra fila, ¡tú siempre te quedarás con la última gema y ganarás!</li>
+                                        <li><strong>Juegos Justos:</strong> En el Nim no hay dados, ni cartas ocultas, ni suerte. Gana quien use mejor la lógica.</li>
+                                        <li><strong>El Gran Secreto:</strong> Al descomponer las fichas en grupos de 1, 2 y 4, la computadora se asegura de que cada grupo siempre tenga su pareja gemela.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TEORÍA DE JUEGOS & DILEMA DEL PRISIONERO -->
+        <section id="game-theory" class="section-container">
+            <div class="glass-card module-card">
+                <div class="module-header">
+                    <div>
+                        <div class="badge"><i class="fa-solid fa-scale-balanced"></i> John Nash & Equilibrio</div>
+                        <h2 class="module-title">El Dilema del Prisionero & Matriz de Pagos</h2>
+                    </div>
+                </div>
+
+                <div class="prisoner-grid">
+                    <!-- Matrix Card -->
+                    <div class="matrix-card">
+                        <h3>Matriz de Recompensas (Años de Prisión)</h3>
+                        <p>Dos sospechosos son interrogados por separado. Los años de condena dependen de sus decisiones mutuas:</p>
+                        
+                        <div class="payoff-matrix">
+                            <div class="matrix-cell header-empty"></div>
+                            <div class="matrix-cell col-header">Sospechoso B: <strong>Coopera</strong></div>
+                            <div class="matrix-cell col-header">Sospechoso B: <strong>Traiciona</strong></div>
+
+                            <div class="matrix-cell row-header">Sospechoso A: <strong>Coopera</strong></div>
+                            <div class="matrix-cell cell-data" id="cell-cc">
+                                <span class="badge-tag">Ambos Cooperan</span>
+                                <div class="years">A: <strong>-1 año</strong> | B: <strong>-1 año</strong></div>
+                                <span class="cell-sub">Pactan silencio</span>
+                            </div>
+                            <div class="matrix-cell cell-data" id="cell-cd">
+                                <span class="badge-tag bad">A Engañado</span>
+                                <div class="years">A: <strong>-5 años</strong> | B: <strong>0 años</strong></div>
+                                <span class="cell-sub">B queda libre</span>
+                            </div>
+
+                            <div class="matrix-cell row-header">Sospechoso A: <strong>Traiciona</strong></div>
+                            <div class="matrix-cell cell-data" id="cell-dc">
+                                <span class="badge-tag good">A Traiciona</span>
+                                <div class="years">A: <strong>0 años</strong> | B: <strong>-5 años</strong></div>
+                                <span class="cell-sub">A queda libre</span>
+                            </div>
+                            <div class="matrix-cell cell-data nash-highlight" id="cell-dd">
+                                <span class="badge-tag nash">★ Equilibrio de Nash</span>
+                                <div class="years">A: <strong>-3 años</strong> | B: <strong>-3 años</strong></div>
+                                <span class="cell-sub">Ambos se delatan</span>
+                            </div>
+                        </div>
+
+                        <div class="nash-info-box">
+                            <i class="fa-solid fa-star"></i>
+                            <div>
+                                <strong>¿Por qué (-3, -3) es el Equilibrio de Nash?</strong>
+                                <p>Porque haga lo que haga el otro, para cada individuo <em>traicionar</em> siempre da un mejor resultado individual (0 es mejor que -1, y -3 es mejor que -5). La racionalidad individual conduce a un resultado globalmente peor.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tournament / Strategy Simulator -->
+                    <div class="strategy-simulator">
+                        <h3><i class="fa-solid fa-robot"></i> Simulador de Torneo de Estrategias</h3>
+                        <p>¿Qué ocurre cuando el dilema se repite muchas veces? (Dilema Iterado de Axelrod):</p>
+
+                        <div class="sim-controls-panel">
+                            <div class="sim-selector">
+                                <label for="bot-a-select">Estrategia Jugador A:</label>
+                                <select id="bot-a-select" class="custom-select">
+                                    <option value="tit-for-tat">Ojo por Ojo (Tit for Tat) - Empieza cooperando y luego imita</option>
+                                    <option value="always-cooperate">Siempre Cooperar (El Santo)</option>
+                                    <option value="always-defect">Siempre Traicionar (El Egoísta)</option>
+                                    <option value="random">Aleatorio (50/50)</option>
+                                    <option value="grudger">Rencoroso (Coopera hasta que lo traicionan una vez)</option>
+                                </select>
+                            </div>
+
+                            <div class="sim-selector">
+                                <label for="bot-b-select">Estrategia Jugador B:</label>
+                                <select id="bot-b-select" class="custom-select">
+                                    <option value="always-defect">Siempre Traicionar (El Egoísta)</option>
+                                    <option value="tit-for-tat">Ojo por Ojo (Tit for Tat)</option>
+                                    <option value="always-cooperate">Siempre Cooperar (El Santo)</option>
+                                    <option value="random">Aleatorio (50/50)</option>
+                                    <option value="grudger">Rencoroso</option>
+                                </select>
+                            </div>
+
+                            <div class="sim-buttons">
+                                <button id="btn-run-sim" class="btn btn-primary">
+                                    <i class="fa-solid fa-play"></i> Ejecutar 20 Rondas
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live Sim Results -->
+                        <div class="sim-results" id="sim-results-box">
+                            <div class="score-cards">
+                                <div class="score-card player-a">
+                                    <span class="player-label">Puntaje Jugador A</span>
+                                    <span class="score-val" id="score-a">0 pts</span>
+                                </div>
+                                <div class="score-card player-b">
+                                    <span class="player-label">Puntaje Jugador B</span>
+                                    <span class="score-val" id="score-b">0 pts</span>
+                                </div>
+                            </div>
+                            <div class="rounds-history" id="rounds-history-log">
+                                <p class="placeholder-text">Haz clic en "Ejecutar 20 Rondas" para ver la simulación paso a paso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History & Deep Math Section for Game Theory (Kid-Friendly) -->
+                <div class="history-math-section">
+                    <div class="history-card-collapsible open">
+                        <button class="history-header-btn" type="button">
+                            <span class="btn-left">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <span>📖 El Cuento de los Dos Amigos y la Confianza (Explicación para Niños)</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="history-content">
+                            <div class="history-grid-split">
+                                <div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-hands-holding-child"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>John Nash y la idea del Trabajo en Equipo</h4>
+                                            <span class="mathematician-dates">1928 – 2015 • Premio Nobel</span>
+                                            <p>El matemático <strong>John Nash</strong> descubrió cómo piensan las personas cuando tienen que tomar decisiones juntos. Demostró que cuando todos piensan solo en su propio beneficio egoísta, ¡todos terminan perdiendo!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-trophy"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>El Torneo de Robots: ¡Ser bueno siempre gana!</h4>
+                                            <span class="mathematician-dates">Robert Axelrod • 1980</span>
+                                            <p>Hicieron competir a computadoras con diferentes personalidades (tramposos, generosos, rencorosos). ¿Quién ganó? El robot <strong>"Ojo por Ojo"</strong>: empezaba siempre siendo amable y ayudando a los demás.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="math-deep-dive">
+                                    <h4><i class="fa-solid fa-heart"></i> La Gran Lección del Juego</h4>
+                                    <ul>
+                                        <li>🤝 <strong>Si los dos se ayudan (Cooperan):</strong> A ambos les va muy bien y reciben solo un pequeño regaño (-1 año).</li>
+                                        <li>😈 <strong>La Tentación de la Trampa:</strong> Si tú haces trampa y tu amigo confía en ti, tú te vas libre pero tu amigo se lleva todo el castigo (-5 años).</li>
+                                        <li>💥 <strong>Si los dos hacen trampa (Equilibrio de Nash):</strong> ¡Los dos salen muy perjudicados (-3 años)!</li>
+                                        <li>💡 <strong>Para recordar:</strong> En la vida real, en el colegio y en la naturaleza, la <strong>confianza y el compañerismo</strong> siempre dan mejores resultados a largo plazo que ser egoísta.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: PARADOJA DE MONTY HALL & PROBABILIDAD -->
+        <section id="monty-hall" class="section-container">
+            <div class="glass-card module-card">
+                <div class="module-header">
+                    <div>
+                        <div class="badge"><i class="fa-solid fa-chart-pie"></i> Probabilidad & El Truco del Coche</div>
+                        <h2 class="module-title">La Famosa Paradoja de Monty Hall (Las 3 Puertas)</h2>
+                    </div>
+                </div>
+
+                <div class="monty-layout">
+                    <!-- Interactive Doors Game -->
+                    <div class="monty-doors-wrapper">
+                        <div class="monty-instructions" id="monty-instruction-text">
+                            Paso 1: ¡Elige una de las 3 puertas! Detrás de una hay un <strong>Automóvil Deportivo</strong> y detrás de dos hay <strong>Cabras</strong>.
+                        </div>
+
+                        <div class="doors-container">
+                            <!-- Door 1 -->
+                            <div class="door-card" data-door="0" id="door-0">
+                                <div class="door-inner">
+                                    <div class="door-front">
+                                        <div class="door-number">1</div>
+                                        <div class="door-knob"></div>
+                                    </div>
+                                    <div class="door-back" id="door-content-0">
+                                        <i class="fa-solid fa-car"></i>
+                                    </div>
+                                </div>
+                                <span class="door-status-tag" id="door-tag-0"></span>
+                            </div>
+
+                            <!-- Door 2 -->
+                            <div class="door-card" data-door="1" id="door-1">
+                                <div class="door-inner">
+                                    <div class="door-front">
+                                        <div class="door-number">2</div>
+                                        <div class="door-knob"></div>
+                                    </div>
+                                    <div class="door-back" id="door-content-1">
+                                        <i class="fa-solid fa-cow"></i>
+                                    </div>
+                                </div>
+                                <span class="door-status-tag" id="door-tag-1"></span>
+                            </div>
+
+                            <!-- Door 3 -->
+                            <div class="door-card" data-door="2" id="door-2">
+                                <div class="door-inner">
+                                    <div class="door-front">
+                                        <div class="door-number">3</div>
+                                        <div class="door-knob"></div>
+                                    </div>
+                                    <div class="door-back" id="door-content-2">
+                                        <i class="fa-solid fa-cow"></i>
+                                    </div>
+                                </div>
+                                <span class="door-status-tag" id="door-tag-2"></span>
+                            </div>
+                        </div>
+
+                        <div class="monty-actions-bar">
+                            <button id="btn-monty-stay" class="btn btn-secondary hidden">
+                                <i class="fa-solid fa-lock"></i> Quedarme con mi Puerta
+                            </button>
+                            <button id="btn-monty-switch" class="btn btn-primary hidden">
+                                <i class="fa-solid fa-arrow-right-arrow-left"></i> Cambiar de Puerta
+                            </button>
+                            <button id="btn-monty-reset" class="btn btn-outline">
+                                <i class="fa-solid fa-rotate-left"></i> Reiniciar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Fast Simulation & Proof -->
+                    <div class="monty-stats-panel">
+                        <h3><i class="fa-solid fa-bolt"></i> Simulador Rápido de Partidas</h3>
+                        <p>Simula 1.000 juegos al instante para comprobar con tus propios ojos cuál opción gana más:</p>
+
+                        <div class="fast-sim-buttons">
+                            <button id="btn-sim-100" class="btn btn-sm btn-accent">Simular +100 Juegos</button>
+                            <button id="btn-sim-1000" class="btn btn-sm btn-accent">Simular +1.000 Juegos</button>
+                            <button id="btn-reset-stats" class="btn btn-sm btn-outline">Limpiar</button>
+                        </div>
+
+                        <div class="stats-comparison-bars">
+                            <div class="stat-bar-group">
+                                <div class="stat-bar-labels">
+                                    <span>Si decides <strong>CAMBIAR</strong> (¡Ganas 2 de cada 3 veces!):</span>
+                                    <span id="label-switch-rate">0% (0 victorias)</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill fill-switch" id="bar-switch" style="width: 0%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="stat-bar-group">
+                                <div class="stat-bar-labels">
+                                    <span>Si decides <strong>QUEDARTE</strong> (Solo ganas 1 de cada 3 veces):</span>
+                                    <span id="label-stay-rate">0% (0 victorias)</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill fill-stay" id="bar-stay" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Monty Mystery Box (Unlocked upon playing or simulating) -->
+                        <div id="monty-mystery-locked" class="mystery-card-locked" style="margin-top: 1.25rem;">
+                            <div class="lock-icon-circle"><i class="fa-solid fa-lock"></i></div>
+                            <h4>🔒 Secreto de Probabilidad Bloqueado</h4>
+                            <p>¡Juega una partida (elige tu puerta final) o pulsa <strong>"Simular Juegos"</strong> para desbloquear la explicación matemática de Marilyn vos Savant!</p>
+                        </div>
+
+                        <div id="monty-mystery-unlocked" class="mystery-card-unlocked" style="display: none; margin-top: 1.25rem;">
+                            <div class="mystery-unlocked-badge"><i class="fa-solid fa-unlock-keyhole"></i> 🔓 ¡Misterio Matemático Desbloqueado!</div>
+                            <div class="monty-proof-summary">
+                                <strong>🎯 ¿Por qué siempre conviene cambiar de puerta?</strong>
+                                <p>Al principio casi seguro te equivocas (hay 2 cabras y solo 1 auto). Como el presentador siempre elimina una cabra, <strong>¡al cambiarte te quedas con el auto casi seguro!</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History & Deep Math Section for Monty Hall (Kid-Friendly) -->
+                <div class="history-math-section">
+                    <div class="history-card-collapsible open">
+                        <button class="history-header-btn" type="button">
+                            <span class="btn-left">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <span>📖 La Increíble Historia de Marilyn y el Truco del Auto (Explicación para Niños)</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="history-content">
+                            <div class="history-grid-split">
+                                <div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-lightbulb"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>Marilyn vos Savant y la respuesta correcta (1990)</h4>
+                                            <span class="mathematician-dates">La mujer con el cerebro más brillante</span>
+                                            <p>En un concurso de televisión, Marilyn explicó que cambiar de puerta duplicaba las posibilidades de ganar el coche. ¡Casi 1.000 profesores de universidad le escribieron cartas diciéndole que estaba equivocada! Pero al final, ¡la matemática demostró que Marilyn tenía toda la razón!</p>
+                                        </div>
+                                    </div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-car-side"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>El concurso de televisión de Monty Hall</h4>
+                                            <span class="mathematician-dates">Programa "Let's Make a Deal"</span>
+                                            <p>El juego se hizo famoso en la televisión. El presentador Monty Hall abría una puerta con una cabra graciosa para poner a dudar a los concursantes y ver si se atrevían a cambiar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="math-deep-dive">
+                                    <h4><i class="fa-solid fa-magnifying-glass"></i> ¿Por qué funciona el truco? (Paso a Paso)</h4>
+                                    <ul>
+                                        <li>🚗 <strong>Paso 1 (Tu primera elección):</strong> Hay 3 puertas: 2 tienen cabras 🐐🐐 y solo 1 tiene el auto 🚗. Por eso, al empezar tienes <strong>2 de 3 posibilidades de haber elegido una cabra</strong> (¡casi seguro fallaste!).</li>
+                                        <li>🐐 <strong>Paso 2 (La ayuda del presentador):</strong> El presentador sabe dónde está el auto y siempre abre una cabra para mostrártela.</li>
+                                        <li>🎉 <strong>Paso 3 (¡La magia de cambiar!):</strong> Si al inicio casi seguro elegiste una cabra (2 de cada 3 veces), ¡al cambiarte a la otra puerta cerrada <strong>TE LLEVAS EL AUTO DIRECTAMENTE</strong>!</li>
+                                        <li>💡 <strong>En resumen:</strong> Cambiar transforma tu mala suerte inicial en una victoria asegurada el <strong>66.6% de las veces</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: PUENTES DE KÖNIGSBERG & GRAFOS EULERIANOS -->
+        <section id="bridges-euler" class="section-container">
+            <div class="glass-card module-card">
+                <div class="module-header">
+                    <div>
+                        <div class="badge"><i class="fa-solid fa-draw-polygon"></i> Nacimiento de la Topología (1736)</div>
+                        <h2 class="module-title">Los 7 Puentes de Königsberg</h2>
+                    </div>
+                </div>
+
+                <div class="bridges-layout">
+                    <!-- Interactive Canvas / SVG -->
+                    <div class="bridges-interactive">
+                        <!-- Step-by-Step Auto Solver Toolbar -->
+                        <div class="bridge-toolbar">
+                            <div class="bridge-mode-group">
+                                <label for="bridge-map-mode"><i class="fa-solid fa-route"></i> Mapa:</label>
+                                <select id="bridge-map-mode" class="custom-select">
+                                    <option value="original-7">🏛️ Königsberg Original (7 Puentes)</option>
+                                    <option value="euler-8">🌉 Con el 8º Puente de Euler (¡Solución Completa!)</option>
+                                </select>
+                            </div>
+                            <div class="bridge-step-controls">
+                                <span class="bridge-step-indicator" id="bridge-step-indicator">Paso 0</span>
+                                <button id="btn-bridges-autoplay" class="btn btn-sm btn-accent" title="Reproducir la solución paso a paso de forma automática">
+                                    <i class="fa-solid fa-play"></i> Auto-Paso a Paso
+                                </button>
+                                <button id="btn-bridges-step" class="btn btn-sm btn-primary" title="Avanzar manualmente 1 puente por clic">
+                                    <i class="fa-solid fa-forward-step"></i> Siguiente
+                                </button>
+                                <button id="btn-bridges-reset" class="btn btn-sm btn-outline" title="Reiniciar recorrido">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bridges-canvas-container" id="bridges-stage">
+                            <!-- Injected by JavaScript -->
+                        </div>
+                        <div class="bridges-status">
+                            <span>Puentes cruzados: <strong id="stat-bridges-crossed">0 / 7</strong></span>
+                            <span id="stat-current-island" style="color: var(--text-accent); font-weight: 600;">Posición: Ninguna</span>
+                        </div>
+                        <div id="bridges-feedback" class="game-alert-box">
+                            Haz clic en "Auto-Paso a Paso" o en "Siguiente" para ver cómo se resuelven los puentes paso por paso.
+                        </div>
+                    </div>
+
+                    <!-- Math Explanation -->
+                    <div class="bridges-theory">
+                        <h3>El Gran Acertijo de Leonhard Euler (1736)</h3>
+                        <p>
+                            Los habitantes de la ciudad salían a pasear los domingos e intentaban cruzar los <strong>7 puentes</strong> sobre el río pasando solo <strong>una vez por cada uno</strong>. ¿Era posible?
+                        </p>
+                        <p>
+                            <strong>Leonhard Euler</strong> demostró con lógica que era una <strong>misión imposible</strong> y creó una rama mágica de las matemáticas: la <em>Teoría de Grafos</em>.
+                        </p>
+
+                        <!-- Königsberg Mystery Box (Unlocked upon completing walk/auto-step) -->
+                        <div id="bridges-mystery-locked" class="mystery-card-locked" style="margin-top: 1.25rem;">
+                            <div class="lock-icon-circle"><i class="fa-solid fa-lock"></i></div>
+                            <h4>🔒 Secreto de Euler Bloqueado</h4>
+                            <p>¡Realiza un recorrido o haz clic en <strong>"Auto-Paso a Paso"</strong> para completar el camino y desbloquear por qué los números impares hacen imposible el acertijo!</p>
+                        </div>
+
+                        <div id="bridges-mystery-unlocked" class="mystery-card-unlocked" style="display: none; margin-top: 1.25rem;">
+                            <div class="mystery-unlocked-badge"><i class="fa-solid fa-unlock-keyhole"></i> 🔓 ¡Misterio de Euler Desbloqueado!</div>
+                            
+                            <div class="degree-table" id="bridges-degree-table">
+                                <div class="degree-row">
+                                    <span>Ribera Norte (A):</span>
+                                    <strong id="deg-val-A">3 Puentes (Impar ❌)</strong>
+                                </div>
+                                <div class="degree-row">
+                                    <span>Isla Central (B):</span>
+                                    <strong id="deg-val-B">5 Puentes (Impar ❌)</strong>
+                                </div>
+                                <div class="degree-row">
+                                    <span>Ribera Sur (C):</span>
+                                    <strong id="deg-val-C">3 Puentes (Impar ❌)</strong>
+                                </div>
+                                <div class="degree-row">
+                                    <span>Ribera Este (D):</span>
+                                    <strong id="deg-val-D">3 Puentes (Impar ❌)</strong>
+                                </div>
+                            </div>
+
+                            <div class="euler-rule-box" id="bridges-rule-box">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <div>
+                                    <strong id="bridges-rule-title">🚪 La Regla de las Puertas Gemelas:</strong>
+                                    <p id="bridges-rule-desc">Para entrar y salir de una isla necesitas puentes que vayan en <strong>parejas (números pares: 2, 4, 6...)</strong>. Como todas las islas de Königsberg tienen un número impar (3 y 5), ¡siempre te quedas atrapado!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History & Deep Math Section for Königsberg (Kid-Friendly) -->
+                <div class="history-math-section">
+                    <div class="history-card-collapsible open">
+                        <button class="history-header-btn" type="button">
+                            <span class="btn-left">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                                <span>📖 La Historia de Euler y el Misterio de los Puentes (Explicación para Niños)</span>
+                            </span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="history-content">
+                            <div class="history-grid-split">
+                                <div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>Leonhard Euler: El genio de los caminos</h4>
+                                            <span class="mathematician-dates">1707 – 1783 • Suiza</span>
+                                            <p>Euler era tan brillante que resolvió el acertijo sin tener que caminar por los puentes. Se dio cuenta de que no importaba el tamaño del río ni de las islas; lo único que importaba era <strong>contar cuántos caminos llegaban a cada lugar</strong>.</p>
+                                        </div>
+                                    </div>
+                                    <div class="mathematician-spotlight">
+                                        <div class="mathematician-avatar"><i class="fa-solid fa-map-pin"></i></div>
+                                        <div class="mathematician-info">
+                                            <h4>La Ciudad de los Puentes de Madera</h4>
+                                            <span class="mathematician-dates">Königsberg (Prusia)</span>
+                                            <p>Una ciudad hermosa rodeada por el río Pregolia. La gente pasaba horas enteras caminando intentando no repetir puentes, hasta que Euler les demostró que el mapa les estaba haciendo una trampa matemática.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="math-deep-dive">
+                                    <h4><i class="fa-solid fa-door-open"></i> El Secreto de "Entrar y Salir"</h4>
+                                    <ul>
+                                        <li>🚶 <strong>Un puente para entrar, otro para salir:</strong> Cada vez que visitas una isla, gastas <strong>2 puentes</strong> (1 de entrada y 1 de salida). ¡Por eso los puentes deben ser números pares (2, 4, 6)!</li>
+                                        <li>🕳️ <strong>La Trampa Impar:</strong> Si una isla tiene 3 puentes, entras (1), sales (2) y cuando vuelves a entrar (3)... ¡ya no tienes ningún puente libre para salir y quedas atrapado!</li>
+                                        <li>🗺️ <strong>Solo el inicio y el final pueden ser impares:</strong> En todo el mapa solo puede haber máximo 2 lugares impares (donde empiezas tu paseo y donde terminas).</li>
+                                        <li>🚫 <strong>Conclusión divertida:</strong> Como Königsberg tiene 4 lugares impares (3, 5, 3 y 3), ¡es imposible recorrerlo sin repetir, hagas lo que hagas!</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            </div>
+        </section>
+
+        <!-- SECTION 7: QUIZ INTERACTIVO PARA ESTUDIANTES -->
+        <section id="quiz-section" class="section-container">
+            <div class="glass-card quiz-card">
+                <div class="quiz-header">
+                    <div class="badge"><i class="fa-solid fa-award"></i> Pon a prueba tus conocimientos</div>
+                    <h2 class="section-title">Desafío Matemático: ¿Cuánto has aprendido?</h2>
+                    <p class="section-subtitle">Responde estas 7 divertidas preguntas interactivas sobre mapas, teoría de juegos, probabilidades y los puentes de Königsberg.</p>
+                </div>
+
+                <div class="quiz-body" id="quiz-container">
+                    <!-- Questions injected by JavaScript -->
+                </div>
+
+                <div class="quiz-footer">
+                    <div class="quiz-progress">
+                        <span id="quiz-progress-text">Pregunta 1 de 7</span>
+                        <div class="quiz-progress-bar">
+                            <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 14.3%;"></div>
+                        </div>
+                    </div>
+                    <div class="quiz-nav-buttons">
+                        <button id="btn-quiz-prev" class="btn btn-outline" disabled>
+                            <i class="fa-solid fa-arrow-left"></i> Anterior
+                        </button>
+                        <button id="btn-quiz-next" class="btn btn-primary">
+                            Siguiente <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Results Modal / Card -->
+                <div id="quiz-results" class="quiz-results hidden">
+                    <div class="results-trophy"><i class="fa-solid fa-trophy"></i></div>
+                    <h3 id="quiz-score-title">¡Gran trabajo!</h3>
+                    <p id="quiz-score-desc">Has acertado 5 de 5 preguntas.</p>
+                    <button id="btn-restart-quiz" class="btn btn-primary">
+                        <i class="fa-solid fa-rotate-left"></i> Intentar de nuevo
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="brand-logo">
+                    <span class="logo-title">Math<span class="highlight">Play</span></span>
+                </div>
+                <p>Plataforma educativa para la enseñanza visual de Matemáticas Discretas, Grafos y Teoría de Juegos.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Temas</h4>
+                <a href="#four-colors">Teorema de los 4 Colores</a>
+                <a href="#game-nim">Juego del Nim (XOR)</a>
+                <a href="#game-theory">Equilibrio de Nash</a>
+                <a href="#monty-hall">Paradoja de Monty Hall</a>
+                <a href="#bridges-euler">Puentes de Königsberg</a>
+            </div>
+            <div class="footer-credits">
+                <p><i class="fa-solid fa-code"></i> Diseñado con fines educativos y de divulgación matemática.</p>
+                <p>© 2026 MathPlay Educational Platform</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
