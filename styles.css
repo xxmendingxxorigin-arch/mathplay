@@ -856,6 +856,12 @@ code, pre, .binary-font {
     color: #34d399;
 }
 
+.success-banner.banner-warning {
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+}
+
 .success-banner i {
     font-size: 1.8rem;
 }

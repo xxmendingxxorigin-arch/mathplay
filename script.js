@@ -70,19 +70,19 @@ function initFourColorModule() {
     const MAP_PRESETS = {
         'south-america': {
             type: 'polygons',
-            viewBox: '0 0 500 560',
+            viewBox: '40 15 470 595',
             regions: [
-                { id: 'col', name: 'Colombia', points: '140,50 200,60 210,120 180,140 160,150 110,100' },
-                { id: 'ven', name: 'Venezuela', points: '200,60 300,50 310,110 240,110 210,120' },
-                { id: 'guy', name: 'Guyanas', points: '300,50 380,60 370,110 310,110' },
-                { id: 'ecu', name: 'Ecuador', points: '110,100 160,150 120,180 80,140' },
-                { id: 'per', name: 'Perú', points: '120,180 160,150 180,140 210,120 220,180 230,240 220,280 170,310 160,300 130,220' },
-                { id: 'bra', name: 'Brasil', points: '210,120 240,110 310,110 370,110 440,170 450,270 380,340 340,360 280,340 260,250 220,280 230,240 220,180' },
-                { id: 'bol', name: 'Bolivia', points: '220,280 260,250 280,340 240,350 200,340 170,310' },
-                { id: 'par', name: 'Paraguay', points: '240,350 280,340 340,360 330,410 260,400' },
-                { id: 'chi', name: 'Chile', points: '160,300 170,310 200,340 200,480 170,540 150,480' },
-                { id: 'arg', name: 'Argentina', points: '200,340 240,350 260,400 330,410 320,460 260,540 200,480' },
-                { id: 'uru', name: 'Uruguay', points: '330,410 380,410 370,460 320,460' }
+                { id: 'col', name: 'Colombia', points: '120,65 135,45 155,35 170,30 185,48 180,75 195,95 220,120 212,150 200,185 175,175 145,160 130,140 115,115 110,95' },
+                { id: 'ven', name: 'Venezuela', points: '185,48 210,52 220,35 255,45 305,55 320,68 310,95 300,115 270,125 245,130 220,120 195,95 180,75' },
+                { id: 'guy', name: 'Guyanas', points: '320,68 365,75 400,95 385,125 345,120 300,115 310,95' },
+                { id: 'ecu', name: 'Ecuador', points: '115,115 95,135 85,160 75,175 100,170 120,170 145,160 130,140' },
+                { id: 'per', name: 'Perú', points: '75,175 65,195 85,230 115,270 135,310 160,340 175,335 185,310 200,285 225,270 210,240 190,215 200,185 175,175 145,160 120,170 100,170' },
+                { id: 'bra', name: 'Brasil', points: '400,95 420,120 440,150 465,175 495,215 480,265 460,310 440,345 410,380 385,420 375,450 370,465 360,450 340,445 320,460 325,430 310,415 315,390 300,365 280,360 295,330 280,285 250,265 225,270 210,240 190,215 200,185 212,150 220,120 245,130 270,125 300,115 345,120 385,125' },
+                { id: 'bol', name: 'Bolivia', points: '175,335 185,310 200,285 225,270 250,265 280,285 295,330 280,360 265,375 245,385 220,380 195,375 185,355' },
+                { id: 'par', name: 'Paraguay', points: '245,385 265,375 280,360 300,365 315,390 310,415 290,430 265,420' },
+                { id: 'chi', name: 'Chile', points: '160,340 165,380 160,430 160,480 150,530 155,570 180,595 185,550 175,500 185,440 195,375 185,355 175,335' },
+                { id: 'arg', name: 'Argentina', points: '195,375 220,380 245,385 265,420 290,430 310,415 325,430 320,460 310,470 315,485 285,485 245,500 220,560 195,585 180,595 185,550 175,500 185,440' },
+                { id: 'uru', name: 'Uruguay', points: '320,460 340,445 360,450 370,465 360,485 335,495 315,485 310,470' }
             ],
             adjacencies: {
                 'col': ['ven', 'ecu', 'per', 'bra'],
@@ -90,30 +90,30 @@ function initFourColorModule() {
                 'guy': ['ven', 'bra'],
                 'ecu': ['col', 'per'],
                 'per': ['col', 'ecu', 'bra', 'bol', 'chi'],
-                'bra': ['col', 'ven', 'guy', 'per', 'bol', 'par', 'uru'],
+                'bra': ['col', 'ven', 'guy', 'per', 'bol', 'par', 'arg', 'uru'],
                 'bol': ['per', 'bra', 'par', 'arg', 'chi'],
                 'par': ['bol', 'bra', 'arg'],
                 'chi': ['per', 'bol', 'arg'],
-                'arg': ['chi', 'bol', 'par', 'uru'],
+                'arg': ['chi', 'bol', 'par', 'bra', 'uru'],
                 'uru': ['bra', 'arg']
             }
         },
 
         'western-europe': {
             type: 'polygons',
-            viewBox: '0 0 520 440',
+            viewBox: '30 30 460 435',
             regions: [
-                { id: 'por', name: 'Portugal', points: '40,270 80,260 80,340 40,350' },
-                { id: 'esp', name: 'España', points: '80,260 180,250 180,350 80,340' },
-                { id: 'fra', name: 'Francia', points: '180,250 190,150 250,140 280,170 280,220 250,260 180,250' },
-                { id: 'uk', name: 'Reino Unido (Isla)', points: '140,70 220,60 200,130 130,120' },
-                { id: 'bel', name: 'Bélgica', points: '250,140 280,130 280,170 250,170' },
-                { id: 'ned', name: 'Países Bajos', points: '270,90 310,80 310,130 280,130 250,140' },
-                { id: 'ger', name: 'Alemania', points: '280,130 370,110 380,210 300,220 280,170' },
-                { id: 'sui', name: 'Suiza', points: '250,220 300,220 300,260 250,260' },
-                { id: 'ita', name: 'Italia', points: '250,260 300,260 360,350 330,370 270,300' },
-                { id: 'aut', name: 'Austria', points: '300,220 380,210 390,260 300,260' },
-                { id: 'pol', name: 'Polonia', points: '370,110 460,100 470,210 380,210' }
+                { id: 'por', name: 'Portugal', points: '70,255 90,290 85,345 75,365 45,360 40,310 50,275' },
+                { id: 'esp', name: 'España', points: '70,240 110,240 180,245 195,260 210,280 205,295 180,335 145,365 95,375 75,365 85,345 90,290 70,255' },
+                { id: 'fra', name: 'Francia', points: '240,100 255,125 270,145 280,170 275,205 260,225 250,250 250,280 230,290 210,280 195,260 180,245 170,210 155,175 120,160 145,140 170,125 210,115' },
+                { id: 'uk', name: 'Reino Unido (Isla)', points: '160,40 185,45 180,75 195,95 210,110 200,130 165,140 125,150 140,120 135,95 150,75 145,55' },
+                { id: 'bel', name: 'Bélgica', points: '240,100 250,90 270,95 285,110 270,145 255,125' },
+                { id: 'ned', name: 'Países Bajos', points: '250,90 265,65 285,55 310,50 305,80 285,110 270,95' },
+                { id: 'ger', name: 'Alemania', points: '310,50 330,40 365,45 375,55 370,105 365,155 340,175 310,195 295,200 275,205 280,170 270,145 285,110 305,80' },
+                { id: 'sui', name: 'Suiza', points: '275,205 295,200 310,195 315,220 310,235 290,240 270,235 260,225' },
+                { id: 'ita', name: 'Italia', points: '260,225 270,235 290,240 310,235 335,230 360,235 340,260 330,300 355,345 380,385 395,415 365,410 355,435 335,450 325,410 305,360 280,320 260,295 250,280 250,250' },
+                { id: 'aut', name: 'Austria', points: '310,195 340,175 365,155 390,160 415,185 395,225 360,235 335,230 310,235 315,220' },
+                { id: 'pol', name: 'Polonia', points: '375,55 420,50 465,60 475,110 465,160 435,185 415,185 390,160 365,155 370,105' }
             ],
             adjacencies: {
                 'por': ['esp'],
@@ -132,18 +132,18 @@ function initFourColorModule() {
 
         'north-central-america': {
             type: 'polygons',
-            viewBox: '0 0 520 460',
+            viewBox: '40 20 480 485',
             regions: [
-                { id: 'can', name: 'Canadá', points: '60,30 460,30 440,100 80,100' },
-                { id: 'usa', name: 'Estados Unidos', points: '80,100 440,100 410,190 150,190' },
-                { id: 'mex', name: 'México', points: '150,190 410,190 320,280 270,280 220,280' },
-                { id: 'gua', name: 'Guatemala', points: '220,280 270,280 260,320 210,320' },
-                { id: 'belz', name: 'Belice', points: '270,280 300,270 300,300 270,300' },
-                { id: 'hon', name: 'Honduras', points: '260,300 330,300 320,340 260,330' },
-                { id: 'slv', name: 'El Salvador', points: '210,320 260,320 260,340 210,340' },
-                { id: 'nic', name: 'Nicaragua', points: '260,330 340,330 330,380 270,370' },
-                { id: 'cri', name: 'Costa Rica', points: '270,370 330,380 350,410 290,410' },
-                { id: 'pan', name: 'Panamá', points: '290,410 350,410 430,420 410,445 310,445' }
+                { id: 'can', name: 'Canadá', points: '55,35 180,25 240,45 290,65 340,40 440,55 420,95 410,105 365,125 330,140 290,135 260,115 160,115 60,115 45,75' },
+                { id: 'usa', name: 'Estados Unidos', points: '60,115 160,115 260,115 290,135 330,140 365,125 410,105 440,135 430,165 420,205 395,250 410,290 400,335 375,280 340,275 300,280 270,305 235,280 195,245 160,235 95,235 70,205 50,165' },
+                { id: 'mex', name: 'México', points: '95,235 160,235 195,245 235,280 270,305 280,340 305,355 330,330 355,320 375,330 365,360 345,365 310,365 290,385 250,375 225,365 190,345 155,315 130,270 120,245 105,280 90,325 75,270' },
+                { id: 'gua', name: 'Guatemala', points: '250,375 290,385 310,365 345,365 345,390 350,395 330,410 290,400' },
+                { id: 'belz', name: 'Belice', points: '365,360 345,365 345,390 360,375' },
+                { id: 'hon', name: 'Honduras', points: '350,395 380,395 405,405 365,420 335,420 330,410' },
+                { id: 'slv', name: 'El Salvador', points: '290,400 330,410 335,420 310,415' },
+                { id: 'nic', name: 'Nicaragua', points: '335,420 365,420 405,405 400,440 395,455 365,450 345,445' },
+                { id: 'cri', name: 'Costa Rica', points: '345,445 365,450 395,455 415,465 405,480 390,485 370,475 350,465' },
+                { id: 'pan', name: 'Panamá', points: '390,485 405,480 415,465 445,465 480,470 505,485 475,490 445,485 415,490' }
             ],
             adjacencies: {
                 'can': ['usa'],
@@ -444,8 +444,272 @@ function initFourColorModule() {
             type: 'polygons',
             viewBox: '0 0 500 400',
             regions: regions,
-            adjacencies: adjacencies
+            adjacencies: computeGeometricAdjacencies(regions)
         };
+    }
+
+    // Shared geometric adjacency calculator (with collinearity verification to prevent corner false conflicts)
+    function computeGeometricAdjacencies(regions) {
+        function distToSegment(p, a, b) {
+            const l2 = (b.x - a.x) ** 2 + (b.y - a.y) ** 2;
+            if (l2 === 0) return Math.hypot(p.x - a.x, p.y - a.y);
+            let t = ((p.x - a.x) * (b.x - a.x) + (p.y - a.y) * (b.y - a.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            return Math.hypot(p.x - (a.x + t * (b.x - a.x)), p.y - (a.y + t * (b.y - a.y)));
+        }
+
+        function edgesOverlap(a1, a2, b1, b2) {
+            const tol = 3.5;
+            const minLen = 4.0;
+            const lenA = Math.hypot(a2.x - a1.x, a2.y - a1.y);
+            const lenB = Math.hypot(b2.x - b1.x, b2.y - b1.y);
+            if (lenA < minLen || lenB < minLen) return false;
+
+            // Ensure edges are parallel/collinear
+            const dot = Math.abs(((b2.x - b1.x) * (a2.x - a1.x) + (b2.y - b1.y) * (a2.y - a1.y)) / (lenA * lenB));
+            if (dot < 0.90) return false;
+
+            if (distToSegment(b1, a1, a2) > tol && distToSegment(b2, a1, a2) > tol) return false;
+
+            const dx = (a2.x - a1.x) / lenA;
+            const dy = (a2.y - a1.y) / lenA;
+            const t_b1 = (b1.x - a1.x) * dx + (b1.y - a1.y) * dy;
+            const t_b2 = (b2.x - a1.x) * dx + (b2.y - a1.y) * dy;
+            const start = Math.max(0, Math.min(t_b1, t_b2));
+            const end = Math.min(lenA, Math.max(t_b1, t_b2));
+            return (end - start >= minLen);
+        }
+
+        const polyEdges = {};
+        regions.forEach(r => {
+            const pts = r.points.trim().split(/\s+/).map(p => {
+                const [x, y] = p.split(',').map(Number);
+                return { x, y };
+            });
+            const edges = [];
+            for (let i = 0; i < pts.length; i++) {
+                edges.push([pts[i], pts[(i + 1) % pts.length]]);
+            }
+            polyEdges[r.id] = edges;
+        });
+
+        const adjacencies = {};
+        regions.forEach(r => adjacencies[r.id] = []);
+
+        for (let i = 0; i < regions.length; i++) {
+            for (let j = i + 1; j < regions.length; j++) {
+                const idA = regions[i].id;
+                const idB = regions[j].id;
+                let sharesEdge = false;
+                for (const eA of polyEdges[idA]) {
+                    for (const eB of polyEdges[idB]) {
+                        if (edgesOverlap(eA[0], eA[1], eB[0], eB[1])) {
+                            sharesEdge = true;
+                            break;
+                        }
+                    }
+                    if (sharesEdge) break;
+                }
+                if (sharesEdge) {
+                    adjacencies[idA].push(idB);
+                    adjacencies[idB].push(idA);
+                }
+            }
+        }
+        return adjacencies;
+    }
+
+    // Generator for McGregor 110-Region Map (Martin Gardner, Scientific American 1975)
+    let cachedMcGregorMap = null;
+    function getOrGenerateMcGregorMap() {
+        if (cachedMcGregorMap) return cachedMcGregorMap;
+        const regions = [];
+        const cx = 250, cy = 290;
+
+        // Central rectangle
+        regions.push({
+            id: 'mcg_0',
+            name: 'Región Central (Núcleo)',
+            points: '220,240 280,240 280,340 220,340'
+        });
+
+        const numTiers = 9;
+        const dx = 18;
+        const dy = 21;
+
+        for (let t = 1; t <= numTiers; t++) {
+            const inY = 240 - (t - 1) * dy;
+            const outY = 240 - t * dy;
+            const inLeft = 220 - (t - 1) * dx;
+            const outLeft = 220 - t * dx;
+            const inRight = 280 + (t - 1) * dx;
+            const outRight = 280 + t * dx;
+
+            const numBricks = t * 2;
+            const span = outRight - outLeft;
+            const brickW = span / numBricks;
+
+            // Top tier bricks
+            for (let b = 0; b < numBricks; b++) {
+                const bx1 = Math.round(outLeft + b * brickW);
+                const bx2 = Math.round(outLeft + (b + 1) * brickW);
+                let pts = [];
+
+                if (b === 0) {
+                    pts = [
+                        `${outLeft},${cy}`,
+                        `${outLeft},${outY}`,
+                        `${bx2},${outY}`,
+                        `${bx2},${inY}`,
+                        `${inLeft},${inY}`,
+                        `${inLeft},${cy}`
+                    ];
+                } else if (b === numBricks - 1) {
+                    pts = [
+                        `${inRight},${cy}`,
+                        `${inRight},${inY}`,
+                        `${bx1},${inY}`,
+                        `${bx1},${outY}`,
+                        `${outRight},${outY}`,
+                        `${outRight},${cy}`
+                    ];
+                } else {
+                    pts = [
+                        `${bx1},${outY}`,
+                        `${bx2},${outY}`,
+                        `${bx2},${inY}`,
+                        `${bx1},${inY}`
+                    ];
+                }
+                regions.push({
+                    id: `mcg_top_${t}_${b}`,
+                    name: `Nivel Superior ${t} - Bloque ${b + 1}`,
+                    points: pts.join(' ')
+                });
+            }
+
+            // Symmetric bottom tier bricks
+            const bInY = 340 + (t - 1) * dy;
+            const bOutY = 340 + t * dy;
+
+            for (let b = 0; b < numBricks; b++) {
+                const bx1 = Math.round(outLeft + b * brickW);
+                const bx2 = Math.round(outLeft + (b + 1) * brickW);
+                let pts = [];
+
+                if (b === 0) {
+                    pts = [
+                        `${outLeft},${cy}`,
+                        `${inLeft},${cy}`,
+                        `${inLeft},${bInY}`,
+                        `${bx2},${bInY}`,
+                        `${bx2},${bOutY}`,
+                        `${outLeft},${bOutY}`
+                    ];
+                } else if (b === numBricks - 1) {
+                    pts = [
+                        `${inRight},${cy}`,
+                        `${outRight},${cy}`,
+                        `${outRight},${bOutY}`,
+                        `${bx1},${bOutY}`,
+                        `${bx1},${bInY}`,
+                        `${inRight},${bInY}`
+                    ];
+                } else {
+                    pts = [
+                        `${bx1},${bInY}`,
+                        `${bx2},${bInY}`,
+                        `${bx2},${bOutY}`,
+                        `${bx1},${bOutY}`
+                    ];
+                }
+                regions.push({
+                    id: `mcg_bot_${t}_${b}`,
+                    name: `Nivel Inferior ${t} - Bloque ${b + 1}`,
+                    points: pts.join(' ')
+                });
+            }
+        }
+
+        // Outermost wrapping corridors
+        const topOuterY = 240 - numTiers * dy;
+        const botOuterY = 340 + numTiers * dy;
+        const leftOuterX = 220 - numTiers * dx;
+        const rightOuterX = 280 + numTiers * dx;
+
+        regions.push({
+            id: 'mcg_outer_1',
+            name: 'Canal Perimetral Norte-Este',
+            points: `20,20 480,20 480,560 455,560 455,${topOuterY - 15} ${rightOuterX},${topOuterY - 15} ${rightOuterX},${topOuterY} ${leftOuterX},${topOuterY} 20,${topOuterY}`
+        });
+
+        regions.push({
+            id: 'mcg_outer_2',
+            name: 'Canal Perimetral Sur-Oeste',
+            points: `20,${topOuterY} 20,560 455,560 455,${botOuterY} ${rightOuterX},${botOuterY} ${leftOuterX},${botOuterY} ${leftOuterX},${cy} 20,${cy}`
+        });
+
+        cachedMcGregorMap = {
+            type: 'polygons',
+            viewBox: '10 10 480 560',
+            regions: regions,
+            adjacencies: computeGeometricAdjacencies(regions)
+        };
+        return cachedMcGregorMap;
+    }
+
+    // Generator for Gardner Orthogonal Maze Map (29-Region Rectilinear Grid Puzzle)
+    let cachedGardnerMap = null;
+    function getOrGenerateGardnerOrthogonalMap() {
+        if (cachedGardnerMap) return cachedGardnerMap;
+        const regions = [
+            // Fila 1 (Superior)
+            { id: 'go_1', name: 'Sector A1 (Esquina NO)', points: '20,20 120,20 120,60 20,60' },
+            { id: 'go_2', name: 'Sector A2 (Ranura Superior)', points: '120,20 145,20 145,60 120,60' },
+            { id: 'go_3', name: 'Sector A3 (Norte Centro-Oeste)', points: '145,20 240,20 240,80 200,80 200,60 145,60' },
+            { id: 'go_4', name: 'Sector A4 (Norte Centro)', points: '240,20 300,20 300,100 240,100' },
+            { id: 'go_5', name: 'Sector A5 (Norte Centro-Este)', points: '300,20 400,20 400,80 350,80 350,100 300,100' },
+            { id: 'go_6', name: 'Sector A6 (Esquina NE)', points: '400,20 480,20 480,140 430,140 430,80 400,80' },
+
+            // Fila 2
+            { id: 'go_7', name: 'Sector B1 (Oeste Superior)', points: '20,60 120,60 120,130 20,130' },
+            { id: 'go_8', name: 'Sector B2 (Trominó Superior)', points: '120,60 200,60 200,130 160,130 160,95 120,95' },
+            { id: 'go_9', name: 'Sector B3 (Cuadrado Central)', points: '160,95 200,95 200,130 160,130' },
+            { id: 'go_10', name: 'Sector B4 (Columna Norte)', points: '200,80 240,80 240,190 200,190' },
+            { id: 'go_11', name: 'Sector B5 (Caja Alta)', points: '300,60 350,60 350,110 300,110' },
+            { id: 'go_12', name: 'Sector B6 (Hueco Este)', points: '430,80 480,80 480,165 430,165' },
+
+            // Fila 3
+            { id: 'go_13', name: 'Sector C1 (Borde Oeste)', points: '20,130 75,130 75,200 20,200' },
+            { id: 'go_14', name: 'Sector C2 (Bloque Escalonado)', points: '75,130 160,130 160,250 80,250 80,200 75,200' },
+            { id: 'go_15', name: 'Sector C3 (Corredor Escalonado)', points: '240,100 300,100 300,190 260,190 260,150 240,150' },
+            { id: 'go_16', name: 'Sector C4 (Serpiente Este)', points: '350,80 400,80 400,180 350,180 350,130 300,130 300,100 350,100' },
+            { id: 'go_17', name: 'Sector C5 (Franja Este)', points: '430,165 480,165 480,260 430,260' },
+
+            // Fila 4 (Centro)
+            { id: 'go_18', name: 'Sector D1 (Oeste Medio)', points: '20,200 80,200 80,310 20,310' },
+            { id: 'go_19', name: 'Sector D2 (Codo Centro)', points: '160,130 200,130 200,290 120,290 120,250 160,250' },
+            { id: 'go_20', name: 'Sector D3 (Bloque Medio)', points: '240,150 260,150 260,190 300,190 300,260 240,260' },
+            { id: 'go_21', name: 'Sector D4 (Codo Gigante)', points: '300,190 430,190 430,260 380,260 380,225 300,225' },
+
+            // Fila 5 (Inferior)
+            { id: 'go_22', name: 'Sector E1 (Pilar SO)', points: '20,310 80,310 80,450 20,450' },
+            { id: 'go_23', name: 'Sector E2 (Arco Sur)', points: '80,290 160,290 160,450 115,450 115,370 80,370' },
+            { id: 'go_24', name: 'Sector E3 (Columna Sur)', points: '115,370 160,370 160,480 80,480 80,450 115,450' },
+            { id: 'go_25', name: 'Sector E4 (T Sur)', points: '160,290 240,290 240,370 200,370 200,480 160,480' },
+            { id: 'go_26', name: 'Sector E5 (Centro Sur)', points: '240,260 300,260 300,370 240,370' },
+            { id: 'go_27', name: 'Sector E6 (Caja Sur)', points: '300,260 380,260 380,370 300,370' },
+            { id: 'go_28', name: 'Sector E7 (Puente SE)', points: '240,370 300,370 300,420 430,420 430,480 240,480 240,420' },
+            { id: 'go_29', name: 'Sector E8 (Esquina SE)', points: '380,260 480,260 480,480 430,480 430,370 380,370' }
+        ];
+
+        cachedGardnerMap = {
+            type: 'polygons',
+            viewBox: '10 10 480 480',
+            regions: regions,
+            adjacencies: computeGeometricAdjacencies(regions)
+        };
+        return cachedGardnerMap;
     }
 
     // Color palette selection handler
@@ -469,6 +733,12 @@ function initFourColorModule() {
         if (mapKey === 'random-map') {
             currentMapData = generateRandomPlanarMap();
             if (btnNewRandom) btnNewRandom.classList.remove('hidden');
+        } else if (mapKey === 'mcgregor-110') {
+            currentMapData = getOrGenerateMcGregorMap();
+            if (btnNewRandom) btnNewRandom.classList.add('hidden');
+        } else if (mapKey === 'gardner-orthogonal') {
+            currentMapData = getOrGenerateGardnerOrthogonalMap();
+            if (btnNewRandom) btnNewRandom.classList.add('hidden');
         } else {
             currentMapData = MAP_PRESETS[mapKey];
             if (btnNewRandom) btnNewRandom.classList.add('hidden');
@@ -619,9 +889,29 @@ function initFourColorModule() {
             conflictWrapper.classList.remove('alert-conflict');
         }
 
-        // Victory Condition: All colored, no conflicts, max 4 colors!
-        if (coloredCount === totalRegions && conflictCount === 0 && distinctColors.size <= 4) {
-            successBanner.classList.remove('hidden');
+        // Victory Condition: All colored, no conflicts, and strictly all 4 colors used!
+        if (coloredCount === totalRegions && conflictCount === 0) {
+            if (distinctColors.size === 4) {
+                successBanner.className = 'success-banner';
+                successBanner.innerHTML = `
+                    <i class="fa-solid fa-trophy"></i>
+                    <div>
+                        <strong>¡Desafío Cumplido!</strong>
+                        <p>Has coloreado todo el mapa sin conflictos usando exactamente los 4 colores requeridos.</p>
+                    </div>
+                `;
+                successBanner.classList.remove('hidden');
+            } else {
+                successBanner.className = 'success-banner banner-warning';
+                successBanner.innerHTML = `
+                    <i class="fa-solid fa-palette"></i>
+                    <div>
+                        <strong>¡Sin conflictos, pero faltan colores!</strong>
+                        <p>Has usado solo ${distinctColors.size} de los 4 colores. Para completar el reto debes usar los 4 colores en el mapa.</p>
+                    </div>
+                `;
+                successBanner.classList.remove('hidden');
+            }
         } else {
             successBanner.classList.add('hidden');
         }
@@ -667,6 +957,22 @@ function initFourColorModule() {
                         .filter(Boolean)
                 );
                 solution[nodeId] = availableColors.find(c => !neighborColors.has(c)) || 'color-1';
+            }
+        }
+
+        // Ensure all 4 colors are used if possible
+        const usedColors = new Set(Object.values(solution));
+        for (const col of availableColors) {
+            if (!usedColors.has(col)) {
+                for (const nodeId of sortedNodes) {
+                    const neighbors = currentMapData.adjacencies[nodeId] || [];
+                    const neighborColors = new Set(neighbors.map(n => solution[n]));
+                    if (!neighborColors.has(col)) {
+                        solution[nodeId] = col;
+                        usedColors.add(col);
+                        break;
+                    }
+                }
             }
         }
 
